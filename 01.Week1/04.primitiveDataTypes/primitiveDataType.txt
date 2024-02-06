@@ -1,0 +1,13 @@
+Primitive Data type are the basic data type of javascript or also known as primary data type which is used
+in almost every js program
+
+Primitive Data type are :
+------------------------
+
+1.Number
+2.BigInt
+3.String
+4.Boolean
+5.null
+6.unidentified
+7.Symbol
