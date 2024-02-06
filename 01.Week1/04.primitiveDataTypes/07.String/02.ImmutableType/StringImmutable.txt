@@ -1,0 +1,13 @@
+In JavaScript ,String are immutable that means the character of a string cannot be changed
+
+ex:
+let a = "hello";
+a[0]='J';
+//This wont change the first letter of variable 'a' it will be still hello and not Jello
+console.log(a);//hello
+
+//However we can assign variable name to new string
+
+let x="hello";
+x="bye";
+console.log(x);

@@ -1,0 +1,24 @@
+Since string is a collection of character/letter it can be considered as an array
+
+what is an array:
+>array is a collection of similar data type and hence string can be considered as array
+
+Now How to access element of a array for that we use indexing
+
+Indexing is a way to address a element in a ordered way by giving them integer number starting from 0
+and goes upto(length of array-1)
+
+string:hello
+
+h e l l 0
+0 1 2 3 4--index
+
+Note :index number are always enclosed in square bracket
+
+const a="hello"
+console.log(a[1]);//e
+
+#another way to access string character is to use string method ie [.charAt(index)]
+
+const a="hello"
+console.log(a.charAt(1));//e

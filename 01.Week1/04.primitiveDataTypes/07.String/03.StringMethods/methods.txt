@@ -1,0 +1,25 @@
+String methods
+
+1.length --> returns the length of string and array
+
+2.charAt(index) --> returns the character at specified index
+
+3.concat() --> join two or more strings
+
+4.replace() -->replace a string with another string
+
+5.split() --> convert the string to an array of string
+
+6.subStr(start_index,end) --> returns a sub string
+
+7.slice(start,end) --> returns a part of string
+
+8.toLowerCase() --> returns the passed string in all lower case
+
+9.toUpperCase() --> returns the passed string in all upper case
+
+10.trim --> removes the whitespace from the starting of string
+
+11.includes() --> search for a substring and returns true and false
+
+12.search() --> search of substring and return it
