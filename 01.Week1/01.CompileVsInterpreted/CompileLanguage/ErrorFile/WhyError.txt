@@ -1,0 +1,28 @@
+So when we tried to execute the following command ie g++ HelloWorld -o HelloWorld to execute
+our c++ file it gave us a error
+
+
+#include<iostream>
+using namespace std;
+int main(void)
+{
+    cout<<"Hello World"<<endl;
+    cout<<a<<endl;
+    return 0;
+}
+
+g++ HelloWorld.cpp -o HelloWorld
+HelloWorld.cpp: In function 'int main()':
+HelloWorld.cpp:6:11: error: 'a' was not declared in this scope
+     cout<<a<<endl;
+
+Now error says that a was not declared ie a is a identifier which is not been declared into the
+memory to be used to it gave us a error that this is an unknown entity in this scope so it cannot
+be executed but before cout<<a<<endl; there is another line which is :
+
+cout<<"Hello World"<<endl;
+
+why this was not executed?well if it was a interpreted language like python or javascript which
+execute code line by line this line of code would have executed but since c++ is a compiled
+language it first transcribe whole code into binary and then execute it but if the code has some
+error in it then code wont be converted into binary
