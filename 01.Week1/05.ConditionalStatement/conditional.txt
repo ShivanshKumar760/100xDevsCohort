@@ -1,0 +1,86 @@
+Conditional are expression that evaluates to true or false and conditional statement are usually
+used to determine program flow through if statement and while loops
+
+*JavaScript if-else
+>The JavaScript if-else statement id used to execute the code on the basis if the condition inside (if) is
+true or not ->if not then the (else) block code is executed
+
+1.if statement
+--------------
+It evaluates the content only if expression is true .The signature of JavaScript if statement is :
+
+if(expression)
+{
+    //code
+}
+ex:
+
+let a=20;
+if(a>10)
+{
+    console.log(a);
+}
+
+2.if-else statement
+--------------------
+It evaluates the content whether condition is true or false.The syntax of JavaScript if-else statement is
+given below
+
+if(expression)
+{
+    //content to be evaluated
+    //if expression is true
+}
+else
+{
+    //content to be evaluated
+    //if expression is false
+}
+
+Ex:
+
+let num = 19;
+if(num%2===0)
+{
+    console.log("num is even");
+}
+else
+{
+    console.log("num is odd");
+}
+
+3.if-else if statement
+-------------------------
+
+it evaluate the content only if the expression is true from several conditional expression.The signature
+of JavaScript if-else if statement is given below
+
+if(expression1)
+{
+    //if true
+    //code1
+}
+else if(expression2)
+{
+    //if expression2 is true
+    //code2
+}
+else
+{
+    //both false
+    //code3
+}
+
+let num2=20;
+if(num2===10)
+{
+    console.log("num2 value is 10");
+}
+else if(num2===20)
+{
+    console.log("num2 is 20");
+}
+else
+{
+    console.log("neither 10 nor 20");
+}
