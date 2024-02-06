@@ -1,0 +1,32 @@
+What are variable?
+
+Well variables are identifiers which are named storage container ie when we declare a variable we basically
+assign a name to a memory block in the ram to store the value
+
+
+Now what are identifier?
+
+Identifiers are the building blocks of a program. Identifiers are unique names that are
+assigned to variables, classes, functions, and other entities. They are used to uniquely
+identify the entity within the program.They are user define and there name should not match with any of
+the keywords that is reserved tokens used in the programs
+
+Rules to Name an Identifier in Programming Language
+A programmer has to follow certain rules while naming variables. For the valid identifier,
+we must follow the given below set of rules.
+
+An identifier can include letters (a-z or A-Z), and digits (0-9).
+
+An identifier cannot include special characters except the ‘_’ underscore.
+
+Spaces are not allowed while naming an identifier.
+
+An identifier can only begin with an underscore or letters.
+
+We cannot name identifiers the same as keywords because they are reserved words to perform a specific task.
+For example, function, class, let, async, await, etc. If we use a keyword’s name as an identifier the
+compiler will throw an error.
+
+The identifier must be unique in its namespace.
+
+JS language is case-sensitive so, ‘name’ and ‘NAME’ are different identifiers.
