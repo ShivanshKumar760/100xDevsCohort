@@ -1,0 +1,72 @@
+In JavaScript we use either [var] or [let] keyword to declare variable for example:
+
+[var x;]
+[let y;]
+
+Here x and y are variables
+->var was used/is used in declaring variable from the time javascript was first introduced but after ES6
+let is the keyword used for declaring variable
+
+*var VS let
+->Both let and var are used to declare variable.However there are some difference b/w them
+
+var
+---
+->var is used in the older javascript programs
+->var is a function scoped variable ie if we decclare a variable using var inside a function its
+accesiblity/scope is limited to function itself and cannot be used outside the function but if we
+declare a variable outside the function using var in main area or a block constraint by 2 curly braces
+{}then it will act as global
+
+->for example [var x;]
+
+let
+---
+>let is the new way of declaring variable starting from ES6
+
+>[let] is block scoped that is if we declare a variable with [let] in a function or a block({}) it will
+limit its scope to that block or function and wont reflect output in main() area
+
+>for example [let y;]
+
+
+Now lets take a small program to understand there behaviour
+
+
+code :
+
+{//block1
+let x=5;
+var y=6;
+}
+//main area
+x=x+5;//this will give error as x is a block scope variable declared using let and hence w cannot use it
+//outside the block
+
+y=y+5;//this will work perfectly cause var is not a block scope way of declaring variable but its a
+//function way
+
+function change()
+{
+let change1=2;
+var change2=3;
+}
+//main area
+change1=change1+2;
+change2=change2+2;
+//both line will give error cause let is block scoped and var is function scoped
+
+//main area
+let a1=3;
+var a2=7;
+
+{//block2
+a1=a1+2;
+a2=a2+3;
+//both line will work cause a1 although declared using let is not constrained by a block and a2 is declared
+//using var outside a function
+}
+
+
+lets take another program to understand this
+--------------------------------------------
