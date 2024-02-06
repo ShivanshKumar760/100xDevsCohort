@@ -1,0 +1,30 @@
+//  The JavaScript(EcmaScript6) introduced a new primitive data type  [Symbol].Symbols are immutable that is
+//  they cannot be changed and are unique.
+//
+//     Example :
+// ----------
+const value1=Symbol("Hello World");
+const value2=Symbol("Hello World");
+console.log(value1===value2);
+
+// Now this will give false value ->why?well although value1 and value2 have same content of type symbol
+// what symbol does is it converts the content inside it into a unique id and hence although it has same
+// content its unique thats why(value1 and value2) cant be same as both are unique
+//
+// *Creating Symbol
+//     ->You use the Symbol() function to create symbol
+
+//creating symbol
+const x= Symbol();
+console.log(typeof x);
+//
+// ->We can pass an optional string as its description
+
+const y=Symbol("hey");
+console.log(y)
+
+// *Access Symbol
+// >to access the description of symbol we use [.] operator
+
+const a = Symbol("Hello");
+console.log(a.description);
