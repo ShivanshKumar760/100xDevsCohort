@@ -1,0 +1,29 @@
+What is String?
+>It is a collection of character enclosed in double or single quote and in js we can use backticks also
+
+
+Ex:
+let stringVariable="hello";
+
+String type
+-----------
+1.single quote = 'Hello'
+2.double quote = "Hello"
+3.backticks= `Hello`
+
+Single quote and double quote are practically same and we can use either of them but backticks are
+generally used when you need to include variable or expression into a string .This is done by wrapping
+variable or expression with[$(variable or expression)]
+
+
+We can also write a quote inside another quote .However the quote should not match the surroundings quotes.
+
+For Example:
+ const name ="My name is "peter"."
+
+ but since both quote are double-quoted it will take the first part as the string ie "My name is " and will
+ neglect the part peter"."
+
+To avoid this we use two different quote
+
+const name = "My name is 'peter' .";
