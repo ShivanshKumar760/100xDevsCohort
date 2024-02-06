@@ -1,0 +1,12 @@
+False value :- In Js ,undefined and null are treated as false values
+
+For Example:
+
+let result = Boolean(undefined);
+let result2=Boolean(null);
+console.log(result);
+console.log(result2);
+
+op
+false
+false

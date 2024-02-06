@@ -1,0 +1,8 @@
+In JavaScript , null is a special value that represent an empty or unknown value
+for example:
+
+    let number=null;
+
+    the code above suggests that the number variable is empty at the moment and may have a value later
+
+Note:null cannot be written or typed as NULL or Null

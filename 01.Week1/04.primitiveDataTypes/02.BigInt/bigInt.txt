@@ -1,0 +1,28 @@
+BigInt - JavaScript BigInt variable are used to store big integer value that are too big to be represented
+by a normal JavaScript Number .
+
+JavaScript Number/integer are only accurate upto 15 digits
+----------------------------------------------------------
+let x=999999999999999;
+let y=9999999999999999;
+
+In JavaScript ,all number are stored in a 64 bit floating-point format(IEEE 754 standard),with this
+standard,large integer cannot be exactly represented and will be rounded of
+
+JavaScript can only safely represent integer upto(2^53-1) ie 9007199254740991 and minimum upto
+(-2^53-1)
+
+integer value outside this range loose precision
+
+*How to create a BigInt:
+------------------------
+To create a BigInt ,append n to the end of number or call BigInt();
+
+let x=999999999999999;
+let y=9999999999999999n;
+
+or
+
+let x=999999999999999;
+let y=BigInt("9999999999999999");
+

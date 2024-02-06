@@ -1,0 +1,17 @@
+Number
+--------
+unlike other programming language in javascript both float ie decimal value and integer whole number fall
+under the category Number
+
+ex:
+let num=3;
+let num2=3.5;
+
+Note to checktype of variable we can usr a typeof function
+
+console.log(typeof num);
+console.log(typeof num2);
+
+o/p
+number
+number
