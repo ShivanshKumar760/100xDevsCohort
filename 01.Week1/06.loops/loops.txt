@@ -1,0 +1,66 @@
+JavaScript Loops 
+->Js loop are used to iterate the peice of code using for , while,do-while.It makes the code
+compact 
+
+1.JavaScript for loop
+>JavaScript for loop iterate the peice of code for the fixed numeber of times.It should be used 
+if numeber of iteration is known
+
+Syntax:
+
+for(initialization;condition;updation)
+{
+    code;
+}
+
+ex:
+
+for(let i=0 ;i<5;i++)
+{
+console.log(i);
+}
+
+2.JavaScript while loop
+>The JS while loop iterate the element for the infinite number of time until the condition 
+becomes true.It should be used if number of iteration is not known
+
+Syntax
+
+while(condition)
+{
+    //code;
+    //updation;
+}
+
+ex:
+---
+let i=1;
+while(i<=5)
+{
+console.log(i);
+i++;
+}
+
+3.JavaScript do-while loop
+------------------------------
+
+It iterates the element for infinite number of time if not given an update statement like 
+while loop but a do-while code is always executed one time whether the condition is true or 
+false
+
+Syntax
+------
+do
+{
+    //code;
+    //update statement;
+}while(condition);
+
+ex:
+---
+let i=1;
+do
+{
+console.log(i);
+i++
+}while(i<4);
