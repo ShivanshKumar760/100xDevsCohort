@@ -1,0 +1,53 @@
+Function
+---------
+
+In javascript function are used to perform operation.We can call js function any number of time to 
+reuse a block of code .
+
+Advantage of a JavaScript Function
+-----------------------------------
+There are mainly two advantage of JavaScript function or Just function in programming 
+
+1.Code Reusability:We can call a function several time so it saves coding it again and again and again 
+
+2.less coding :It makes our program compact,we dont need to write many line of code again and again
+each time we perform a commom task or operation
+
+Syntax of a function
+------------------------
+
+function function_name(parameter/arguments)
+{
+    //block of code;
+}
+
+Note :
+JavaScript function can have 0 or more arguments/parameters
+
+#JavaScript function Examples
+
+i)Lets see the example of function in javascript that does not have any arguments
+
+function msg()
+{
+    console.log("Hello");
+}
+msg();
+
+ii)JavaScript function with arguments
+
+function add(n1,n2,n3)
+{
+    console.log(n1+n2+n3);
+}
+add(2,3,4);
+
+iii)JavaScript function with return 
+
+function multiply(n1,n2)
+{
+return n1*n2;
+}
+console.log(multiply(2,3));
+
+
