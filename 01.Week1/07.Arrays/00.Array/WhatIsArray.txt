@@ -1,0 +1,66 @@
+What is Array:
+>In Programming array is an object/data strucutre that represents a collection of similar type 
+of elements 
+
+
+But in JS array is a data strucutre to store different type of data type element in a list format
+
+There are 3 ways to construct array in JavaScript
+
+1.By Array literal
+
+2.By creating instance of array directly using new keyword
+
+3.By using an array constructor using new keyword
+
+
+I.JavaScript array literal
+>The syntax of creating array using array literal is :
+    let arrayName = [value1,value2,value3,........valueN];
+
+As we can see value are contained inside [] and seprated by (,) comma 
+
+let see the simple example of creating array and using array in JS 
+
+let arr1=[1,2,3,4];
+console.log(arr1);
+
+or 
+
+let a = ["shiv",1];
+console.log(a);
+console.log(typeof a[0]);
+console.log(typeof a[1]);
+
+or 
+
+let arr2=[];//empty array 
+//we can provide value using indexing
+
+arr2[0]=4;
+arr2[1]=9;
+
+console.log(arr2);
+
+
+II.JavaScript Array directly(new keywords)
+>The syntax of creating array directly is given below
+
+let array_name = new Array();
+
+>Here ,new keyword is used to create instance of array.
+let array_name = new Array();
+array_name[0]="Anil"
+array_name[1]="Sunil";
+
+console.log(array_name);
+
+
+III.JavaScript Array constructor
+>Here ,we need to create instance of array by passing argument in constructor so that we dont have to 
+provide value explicitly.
+
+Ex:
+
+var emp=new Array("Jai","Vijay","Anil");
+console.log(emp);

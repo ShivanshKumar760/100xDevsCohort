@@ -1,0 +1,82 @@
+Array Methods 
+
+1) .includes(x)
+
+>arrayName.includes(x) will search for element x inside array and if it found x then it will return true 
+or else false
+
+let arr=[a,b,c,d];
+console.log(arr.includes(c));
+
+
+2) .concat()
+
+>combine two or more arrays and return a new array .This method dosent make any change in the original 
+array 
+
+
+Syntax:
+------
+The concat() method is represented by the following Syntax
+
+array1.concat(array2,array3,....arrayN);
+
+>It returns a new array object that represents a joined array
+
+ex:
+
+let a=[1,2,3];
+let b=[4,5,6]
+console.log(a.concat(b));
+console.log(b);
+
+3) .copyWithin()
+>The JavaScript array method copyWithin copies the part of given array with its own element and return 
+the modified array.This method dosent change the length of modified array 
+
+Syntax:
+-------
+The copyWithin() method is represented by :
+array.copyWithinn(target,start,end);
+
+Parameter :
+----------
+
+a)target-the position from where the copying of element will take place 
+
+b)start-It is optional.It represents the index from where the method starts copying .By default it is 0
+
+c)end-It is optional too.It represents the index at which elements stop copying.By default it is 
+(array.length-1)
+
+
+Example :
+----------
+
+var arr=["Angular","Node","Query","BS"];
+var result=arr.copyWithin(0,1,2);
+//at 0th position from index 1 start copying till index 2 and size of array should be same as original
+console.log(result);
+
+[Node,Node,Query,BS]
+
+>The node is repeated twice before the query element because Query is the 2nd index position element 
+and copying should end there plus size of array should be same as original so to fill the gap its 
+repeated
+
+
+IV.push(x)
+
+>push(x) pushes an element into the array and it always push or insert element at last position 
+or length-1
+
+var num=[1,2,3]
+num.push(4)
+
+V.pop(x)
+>pop actually take the element from the last position and display onto the console 
+
+var num2 = [1,2,3,4,5]
+num2.pop()
+
+>>>5
