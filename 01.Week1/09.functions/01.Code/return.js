@@ -1,5 +1,5 @@
-function multiply(n1,n2)
+function multiply(num1,num2)
 {
-return n1*n2;
+    return num1*num2;
 }
 console.log(multiply(2,3));
