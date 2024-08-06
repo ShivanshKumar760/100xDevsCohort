@@ -1,0 +1,8 @@
+The Component that can be depicted on the web page consists of one or more than one rectangular
+box 
+
+->A css box model is a compartment that includes numerous assets,such as edge , border, padding
+,margin and material.It is used to develop the design and structure of the web page .It can be used 
+as a set of tools to personalize the layout of the web page and different components.According to css
+box model the web browser supplies each element a square prism.
+

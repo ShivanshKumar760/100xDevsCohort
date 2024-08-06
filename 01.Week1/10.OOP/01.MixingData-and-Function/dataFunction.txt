@@ -1,0 +1,176 @@
+Mixing Data and Functionality:
+---------------------------
+Now lets study mixing data and functionality this is kind of the stepping stone toward full OOP and working with classes 
+
+Imagine we have  a couple of functions to calculate the area and hypoenuse if the right angle triangle 
+
+/*Area of right angle triangle*/
+
+function getTriangleArea(a,b)
+{
+	return (a*b)/2;
+}
+
+/*Hypotenuse of Right angle triangle*/
+
+function getTriangleHypotenuse(a,b)
+{
+	return Math.sqrt(a**2+b**2);
+}
+
+
+Now lets say we have a right triangle with side (3,4)->so we will call  the function to calculate it 
+
+console.log(getTriangleArea(3,4));
+
+output:
+3.5
+
+Now lets say we have another triangle with side (5,12) we will have to call the function again 
+
+console.log(getTriangleArea(5,12));
+
+Output:
+30
+
+But then lets assume we have data of 10000 triangle ,then we will have to call the function 10,000 times and everytime we will call the function we will have to pass parameter 10000 and that will be very hard to keep track of like which function is associated with wich parameter 
+
+
+To deal with this we have two ways:
+
+1.Assign function call to varaible like:
+
+let myt1=getTraingleArea(3,4);
+
+let myt2=getTriangleArea(5,12);
+
+
+with help of avraible we can keep records of triangle but its not very efficient when there are more than one function related to triangle property  
+
+like here:
+function getTriangleArea(a,b)
+{
+	return (a*b)/2;
+}
+
+/*Hypotenuse of Right angle triangle*/
+
+function getTriangleHypotenuse(a,b)
+{
+	return Math.sqrt(a**2+b**2);
+}
+
+
+now if we want to maintain record for the data to be passsed to get back the area and hypotenuse of triangle then we will have to maintain two variable seprately to keep track :
+
+let myt1_area=getTriangleArea(3,4);
+let myt1_hypo=getTriangleHypotenuse(3,4);
+
+//so it gets confusing two variable strating with same mytr1
+
+
+
+2nd way is much more efficient that is use of varaible combined with a key value data strucutre called object:
+
+
+2.Create a object with value as a and b and wrap it with a function ie combine our data with function like below:
+
+let myt1={
+a:3,
+b:4,
+getArea:function()
+{
+	return (this.a*this.b)/2;
+},
+//this is akeyword denoting this object is myt1
+
+getHypo:function(){
+return Math.sqrt(this.a**2+this.b**2);
+}
+
+};
+console.log(myt.getArea());
+
+so now we have a myt1 object  all data for triangle one 1 and we just have to access it that is the function to getArea of traingle we dont even have to pass parameter and both
+the function are associated with same variable
+
+
+myt1.getArea();
+
+//6 as the output 
+
+
+and if we have to change the side also we can do that via accessing the key 
+
+myt1.a=5;
+myt2.b=12;
+
+//side are updated 
+
+
+now we can call the function again and calculate area
+
+
+myt1.getArea();
+
+output is :
+30
+
+
+So making object with data and function is much better to keep track of data and function attached to single variable cause everything is wrapped.
+
+
+But there still persists a problem in the object and that is it is not re usable  
+unlike function cause although with object we are able to seprate data of different triangle from one another we have to write object schema for every triangle so if there 
+are 100 triangle we will have to write it 100 times and each object will be associated
+with variable and object itself is a data type so it will increase space complexity
+
+
+let myt1={a:3,b:4,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+};
+console.log(myt.getArea());
+
+let myt2={a:5,b:12,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+};
+console.log(myt.getArea());
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+let myt100={a:6,b:34,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+};
+console.log(myt.getArea());
+
+
+so we will have to write/type this 100 times for 100 triangle which is time consuming and space /memory consuming
+
+
+So using a object we can helpfully mix data and functionality ->this is tidy :related to functionality lives together 
+
+
+but 
+
+annoying when we have more than one triangle as it is :
+	#difficult to maintain 
+	#if we have 1000 triangle ,we'd have 1000 copies of these object thats going to waste memories
+
+so we have a better option instead of creating object ds we can create class a blueprint 

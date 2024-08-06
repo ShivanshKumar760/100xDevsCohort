@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.item1{
+    flex-grow: 2;
+    font-size: 25px;
+    color:blue ;
+}
+.item2{
+    flex-grow: 0;
+}
+ul{
+list-style-type: none;
+display: inline;
+}
+li{
+    display: inline;
+    margin: 0 10px 0 10px;
+    font-size: 25px;
+}
+.zerodha-landing-page
+{
+    text-align: center;
+}
+img{
+    height: 400px;
+    width: 1000px;
+}
+.invest,.about,.signup{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.signup{
+    margin-top: 10px;
+}

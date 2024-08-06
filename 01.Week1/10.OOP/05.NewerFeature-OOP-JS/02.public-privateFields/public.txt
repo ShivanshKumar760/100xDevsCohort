@@ -1,0 +1,102 @@
+So what is public field ?
+
+Well so till now whenever we were trying to set the properties of our object we took the help of constructor ie suppose we have a class Cat and it needs to have properties like:
+
+
+i.name
+ii.breed
+iii.number of legs
+iv.isTail
+v.species
+
+Now the number of leg is 4 for every cat the isTail property is true for every cat and the species of tha cat is also constant that is felis-catus:
+
+
+so in order to make this class what we can do is :
+
+first approach is :
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+		this.numLegs=4;
+		this.isTail=true;
+		this.species="Felis-catus";
+	}
+}
+
+so this is one way to define the properties of object but as we can see there are many constant value which dosent change like species ,number-of legs and isTail boolean value now 
+
+a way to define a constant value which dosent change accross the class and dosent depend upon instance of class is to use static key word to define that property and by doing so we tie that property to class and not the object so that property can be :
+
+->species but not numLeg or isTail cause there is a possiblity that a Cat may have loosed one of his leg or tail in an accident
+
+so to we can define the other constant value outside the constructor without static keyword and they are our public field they can be access within the class and outside the class also via object instance
+
+ class Cat{
+ 	numLegs=4;
+ 	isTail=true;
+ 	static species="Felis-catus";
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+}
+
+
+//this is the correct way to define the constant and default value 
+//that is using public field 
+
+
+another advantage of public field is it helps in documentation of object and class that is although we can take user input of property of a class/object using constructor it is a good practice to define the property name using public field and take input using constructor and cause even if there is not input given to a perticular property we can console out the object and it will shows
+us a undefined property and we can figure out that we havent given input for that property 
+
+
+
+
+
+
+ class Cat{
+ 	name;//we wont initialize it with pre-define value instead it 
+ 	//will help other programmer to figure out that there is a 
+ 	//property name which is not constant and need to be taken 
+ 	//input for  using constructor
+
+ 	breed;
+
+ 	numLegs=4;
+ 	isTail=true;
+ 	static species="Felis-catus";
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+}
+
+let o1=new Cat("blue");
+
+console.log(o1);
+
+Cat{name:blue,breed:undefined,numLegs:4,isTail:true};
+
+//so we can see that breed is undefined we havent given any input 
+//for it and this is indicated by use of public field
+
+
+let o2=new Cat("blue","Sphynx");
+console.log(o2);
+
+Cat{name:blue,breed:Sphynx,numLegs:4,isTail:true};
+
+
+
+Note :it is not neccesary for us to put public field on top of the class we can put down also but by convention we just put above 
+
+
+Benift of using public class field is:
+
+->We can clean up our constructor that is we dont have to define constant value in our constructor and we can just take all the default value out of it and if we want we can update them either manually or via instance method

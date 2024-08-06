@@ -1,0 +1,14 @@
+Elements of the width and height
+Typically, when you assign the width and height of an attribute using the CSS width and height assets, 
+it means you just positioned the height and width of the subject areas of that component. 
+The additional height and width of the unit box is based on a range of influences.
+
+The specific area that an element box may occupy on a web page is measured as follows-
+
+Size of the box	Properties of CSS
+
+Height of box:-
+height(content_area) + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom
+
+Width of box:
+width(content_area) + padding-left + padding-right + border-left + border-right + margin-left + margin-right

@@ -1,0 +1,386 @@
+So what is css ?
+->CSS stands for cascading style sheet which as the name suggest is a styling language for the web page 
+CSS is the language we use to style an HTML document.CSS describes how HTML elements should be displayed.
+
+Examples 
+-----------
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+
+What is CSS?
+->CSS stands for Cascading Style Sheets
+->CSS describes how HTML elements are to be displayed on screen, paper, or in other media
+->CSS saves a lot of work. It can control the layout of multiple web pages all at once
+->External stylesheets are stored in CSS files with .css extension 
+
+Syntax:
+---------
+The selector points to the HTML element you want to style.
+The declaration block contains one or more declarations separated by semicolons.
+Each declaration includes a CSS property name and a value, separated by a colon.
+Multiple CSS declarations are separated with semicolons, and declaration blocks are surrounded by curly braces.
+
+
+css_Selector {propertyName:value;}
+
+Selector can be html tag name ,class name,id of tag 
+
+like suppose there is a  tag <h1 class="heading" id="heading1">Hello</h1>
+
+so we can style it like this:
+
+h1{color:"red";}
+or .heading{color:"blue";} or #heading1{color:"green";}
+
+
+Lets dive a bit more into selectors 
+Css Selectors are used to select the content we want to style.Selectors 
+are the part of css rule set.CSS selectors selcet the HTML elements according to its 
+id,class,type,attribute etc
+
+There are several selectors in CSS
+-----------------------------------
+1.CSS element selectors
+2.CSS id selectors 
+3.CSS class Selectors 
+4.CSS universal selectors 
+5.CSS Group Selectors 
+
+
+1) CSS Element Selector
+The element selector selects the HTML element by name.
+
+Example:
+HTML:
+-----------
+<body>  
+<p>This style will be applied on every paragraph.</p>  
+<p id="para1">Me too!</p>  
+<p>And me!</p>  
+</body> 
+
+CSS
+---------
+p{  
+    text-align: center;  
+    color: blue;  
+}   
+
+This will change every paragraph element to blue 
+
+
+2) CSS Id Selector
+The id selector selects the id attribute of an HTML element to select a specific element. An id is always unique within the page so it is chosen to select a single, unique element.
+
+It is written with the hash character (#), followed by the id of the element.
+
+Let?s take an example with the id "para1".
+Example:
+HTML:
+-----------
+<body>  
+<p>This style will be applied on every paragraph.</p>  
+<p id="para1">Me too!</p>  
+<p>And me!</p>  
+</body> 
+
+CSS
+---------
+#para1 {  
+    text-align: center;  
+    color: blue;  
+}  
+
+
+3)CSS class selectors
+-----------------------------
+The class selector selects HTML elements with a specific class attribute. It is used with a period character . (full stop symbol) followed by the class name.
+
+Example:
+---------------
+HTML
+--------
+<body>  
+<h1 class="center">This heading is blue and center-aligned.</h1>  
+<p>This paragraph is neither blue nor center-aligned.</p>   
+</body>
+
+
+CSS
+-------
+.center {  
+    text-align: center;  
+    color: blue;  
+} 
+
+4)CSS Class Selector for specific element
+If you want to specify that only one specific HTML element should be affected then you should use the element name with class selector.
+u can use id also but in html id can only be assigned uniquely so they are 
+already specific 
+
+Let's see an example.
+
+<!DOCTYPE html>  
+<html>  
+<head>  
+<style>  
+p.center {  
+    text-align: center;  
+    color: blue;  
+}  
+</style>  
+</head>  
+<body>  
+<h1 class="center">This heading is not affected</h1>  
+<p class="center">This paragraph is blue and center-aligned.</p>   
+</body>  
+</html>   
+
+
+
+5) CSS Universal Selector
+The universal selector is used as a wildcard character. It selects all the elements on the pages.
+
+Example:
+---------------
+HTML
+--------
+<body>  
+<h2>This is heading</h2>  
+<p>This style will be applied on every paragraph.</p>  
+<p id="para1">Me too!</p>  
+<p>And me!</p>  
+</body>  
+
+
+CSS
+-------
+* {  
+   color: green;  
+   font-size: 20px;  
+}  
+
+
+
+6) CSS Group Selector
+The grouping selector is used to select all the elements with the same style definitions.
+
+Grouping selector is used to minimize the code. Commas are used to separate each selector in grouping.
+
+Let's see the CSS code without group selector.
+
+h1 {  
+    text-align: center;  
+    color: blue;  
+}  
+h2 {  
+    text-align: center;  
+    color: blue;  
+}  
+p {  
+    text-align: center;  
+    color: blue;  
+}  
+As you can see, you need to define CSS properties for all the elements. It can be grouped in following ways:
+
+h1,h2,p {  
+    text-align: center;  
+    color: blue;  
+}  
+Let's see the full example of CSS group selector.
+
+<!DOCTYPE html>  
+<html>  
+<head>  
+<style>  
+h1, h2, p {  
+    text-align: center;  
+    color: blue;  
+}  
+</style>  
+</head>  
+<body>  
+<h1>Hello Javatpoint.com</h1>  
+<h2>Hello Javatpoint.com (In smaller font)</h2>  
+<p>This is a paragraph.</p>  
+</body>  
+</html>  
+
+
+Now we can have 3 type of css 
+
+1.inline CSS
+2.internal CSS
+3.external CSS
+
+
+1.Inline CSS:
+------------------
+Inline CSS is a method of applying styling directly to individual 
+HTML elements using the “style” attribute within the HTML 
+tag,allowing for specific styling of individual elements
+within the HTML document, overriding any external or
+internal styles.
+
+
+Example:
+<body>
+    <p style="color:#009900; 
+              font-size:50px; 
+              font-style:italic; 
+              text-align:center;">
+        GeeksForGeeks
+    </p>
+ 
+</body>
+
+Inline CSS Example Explanation:
+In the above-example we are following these steps
+
+Here we are using Inline CSS directly to the paragraph element.
+Changes color to green, font size to 50px, style to italic, and alignment to center.
+Styling overrides external and internal CSS.
+
+
+
+2.Internal or Embedded CSS:
+--------------------------------
+Internal or Embedded CSS is defined within the HTML document’s 
+<style> element. It applies styles to specified HTML elements, 
+The CSS rule set should be within the HTML file in the head 
+section i.e. the CSS is embedded within the <style> tag inside 
+the head section of the HTML file.
+
+Internal or Embedded CSS Example:
+This example shows the use of internal CSS with the help of an
+ HTML document.
+
+
+<html>
+ 
+<head>
+    <title>Internal CSS</title>
+    <style>
+        .main {
+            text-align: center;
+        }
+ 
+        .GFG {
+            color: #009900;
+            font-size: 50px;
+            font-weight: bold;
+        }
+ 
+        .geeks {
+            font-style: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="main">
+        <div class="GFG">GeeksForGeeks</div>
+ 
+        <div class="geeks">
+            A computer science portal for geeks
+        </div>
+    </div>
+</body>
+ 
+</html>
+
+
+
+Internal or Embedded CSS Example Explanation:
+In the above-example we are following these steps
+
+->We use internal CSS styles defined within the <style> element in the <head> section.
+->CSS rules are applied to elements with specific classes like “main,” “GFG,” and “geeks.”
+->The “GFG” class styles text in green, large font size, and bold.
+->The “geeks” class styles text with bold font style and a smaller font size.
+
+
+
+
+3.External CSS:
+-----------------------
+External CSS contains separate CSS files that contain only 
+style properties with the help of tag attributes
+(For example class, id, heading, … etc). CSS property is 
+written in a separate file with a .css extension and should 
+be linked to the HTML document using a link tag. It means 
+that, for each element, style can be set only once and 
+will be applied across web pages.
+
+External CSS Example:
+This example shows the use of external CSS with the
+help of an HTML document.
+
+
+Html
+---------
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>External CSS</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="main">
+		<div class="GFG">GeeksForGeeks</div>
+
+		<div id="geeks">
+			A computer science portal for geeks
+		</div>
+	</div>
+</body>
+
+</html>
+
+CSS
+-----
+body {
+	background-color: powderblue;
+}
+
+.main {
+	text-align: center;
+}
+
+.GFG {
+	color: #009900;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#geeks {
+	font-style: bold;
+	font-size: 20px;
+}
+
+
+Some Important points:
+->Inline CSS has the highest priority, then comes Internal/Embedded followed by External CSS which has the least priority. 
+Multiple style sheets can be defined on one page. For an HTML tag, styles can be defined in multiple style types and follow the below order.
+
+->As Inline has the highest priority, any styles that are defined in the internal and external style sheets are overridden by Inline styles.
+
+->Internal or Embedded stands second in the priority list and overrides the styles in the external style sheet.
+
+->External style sheets have the least priority. If there are no styles defined either in inline or internal style sheet then external style sheet rules are applied for the HTML tags.

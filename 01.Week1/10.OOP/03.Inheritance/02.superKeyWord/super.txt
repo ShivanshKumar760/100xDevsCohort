@@ -1,0 +1,173 @@
+Now suppose we have a parent class 
+
+Triangle and a child class ColorTriangle
+
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	describe()
+	{
+		return `Area of triangle with side 
+		${this.a} and ${this.b} is :${this.getArea()}`;
+	}
+
+}
+
+//child class
+
+class ColorTriangle extends Triangle
+{
+	constructor(a,b,color)
+	{
+		this.a=a;
+		this.b=b;
+		this.color=color;
+	}
+
+	describe()
+	{
+		return `Area is ${this.getArea()}.`+`Color is ${this.color}!`;
+	}
+}
+
+
+
+Now if we initialize the ColorTriangle with constructor value lets see what happens :
+
+
+let cT=new ColorTriangle(4,5,"red");
+
+>>This will give us the RefrenceError:Must Call super construcutor in derived class before accessing 'this' or returning from derived constructor at new ColorTriangle 
+
+
+this error occurs cause our child class
+has code repetation similar to parent class which causes conflict .
+
+
+
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+}
+
+class ColorTriangle extends Triangle
+ {
+	constructor(a,b,color)
+	{
+		this.a=a;//line 1
+		this.b=b;//line 2
+//both line 1 and 2 are code repetation of parent class Trinagle
+
+		//break point
+		this.color=color;
+	}
+}
+
+
+to avoid this we use the keywor super() with the arguments that need to be passed in parent class 
+
+
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	describe()
+	{
+		return `Area of triangle with side 
+		${this.a} and ${this.b} is :${this.getArea()}`;
+	}
+
+}
+
+//child class
+
+class ColorTriangle extends Triangle
+{
+	constructor(a,b,color)
+	{
+		super(a,b);//this calls the //constructor from the parent class
+		this.color=color;
+	}
+
+	describe()
+	{
+		return `Area is ${this.getArea()}.`+`Color is ${this.color}!`;
+	}
+}
+
+
+is it nessasary  to use super???
+
+
+
+Using super in JavaScript is not always necessary, but it is often recommended when working with class inheritance. Let me explain why:
+
+1.Inheritance and Constructors:
+
+In JavaScript, when you create a child class (subclass) that extends a parent class (superclass), the child class inherits properties and methods from the parent class.
+Constructors are special methods used to initialize object instances. When you create an instance of a class, its constructor is automatically called.
+If the parent class has its own constructor, you can use super() to call that constructor from within the child class constructor.
+
+
+Why Use super?
+
+Initialization: When creating an instance of the child class, you want to ensure that both the child and parent class properties are properly initialized.
+Access to Parent Properties: The super keyword allows you to access properties and methods defined in the parent class.
+Avoid Duplicating Code: By calling super(), you avoid duplicating initialization logic that already exists in the parent class constructor.
+
+
+
+
+When to Use super:
+Required for Constructors: If the parent class has a constructor that sets up important properties, you should use super() to invoke it.
+Optional for Methods: For methods other than the constructor, using super is optional. You can directly call parent class methods using super.methodName().
+
+
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name); // Call parent class constructor
+        this.breed = breed;
+    }
+}
+
+const myDog = new Dog('Buddy', 'Golden Retriever');
+console.log(myDog.name); // Output: Buddy
+console.log(myDog.breed); // Output: Golden Retriever
+
+
+
+
+Exceptions:
+If the child class doesn’t define its own constructor, it implicitly inherits the parent class constructor.
+If the parent class doesn’t have a constructor, JavaScript automatically provides a default one.
+In summary, while using super is not strictly necessary for all methods, it is crucial for correctly initializing inherited properties during object creation.

@@ -1,0 +1,234 @@
+In javaScript we have static variable also know as static properties and static function know as static method as they are associated with class .
+
+
+static properties 
+------------------------
+
+so in js-class we can take input via constructor and we can have predefine value also as a constructor example:
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+		this.species="Felis Catus"
+	}
+}
+
+so as we can see that we have define a class Cat and we made a constructor to take input of cat name and cat breed cause diffrent cat will have diffrent name and breed but  the one thing that will be common is the species of the cat and thats why we predefine it
+
+so when ever we initiate a new instance of class Cat like this below 
+
+let c1=new Cat("terror","British Shorthair")
+
+//now if we console-log the c1 instance 
+
+console.log(c1);
+//it will give us 
+
+Cat{name:"terror",Breed:"British Shorthair",species:"Felis Catus"};
+
+so now here although we didnt provide a user inputed value for the species in the object c1 it was present cause we predifine but since species is something which constant as every cat belongs to the same spceies and it wont change based on the instance of Cat class like cat name is varaible it can change from cat to cat ,breed is a variable component change from cat to cat  but not the species 
+
+
+so when we pre-intialize or pre-define a property like this :
+this.property=value //it gets lacthed or attached to instance of 
+//object that we will be able to change this property via the
+// object dot notation 
+
+
+like this 
+
+c1.species="fire cats";//it can be changed easily 
+
+
+so this approach is wrong to define a constant property we should use static keyword to define that property and cause if that the perticular property is not instance specific but rather class specific that is we cannot access that property via the instance of class 
+
+like this:
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+}
+
+
+let c1=new Cat("terror","British Shorthair");
+console.log(c1);
+
+//Cat{name:"terror",breed:"British Shorthair"}//here we wont be //able to see geneticSpecies cause it is not specific to c1 
+//instance of class Cat 
+
+
+//rather its specific to only class that only via using class name 
+//we can access it so it wont change from instance to instance of 
+//that class
+
+console.log(Cat.geneticSpecies);
+
+//Felis catus 
+
+but if we try to access geneticSpecies using instance of class than it will result in undefine:
+
+console.log(c1.geneticSpecies);
+
+>>undefined 
+
+as the geneticSpecies property is not attached to c1 instance of object
+
+
+->So whenever we need a property that is constant throughout the class and not attached or tied  to the instance of class  we use 
+static properties in some oop language it is called class attributed
+
+
+
+
+
+
+Similarly we have static method 
+
+
+Static Method 
+----------------------------
+
+In javaScript we have static mehtod now note javaScript static method are known as class methods in other progrmming language like C++/java and python cause in C++,java and python a static method is different from class method we will see how later 
+
+
+
+Static Method in Js is something specific to that class that it is 
+called on the class and not on the object or instance of class 
+that is to access it we use:
+
+className.method() and not objectName.method()
+
+
+just like static property static method also is tied to class and not the instance of class
+
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+
+	static meow()
+	{
+		return "Meow Meow Meow!!!!"
+	}
+}
+
+
+
+let c1=new Cat("terror","British Shorthair");
+
+c1.meow();//it will give us error known as typeerror saying 
+//c1.meow is not a function and thats because it is static function
+//and can only be accessed by that class
+
+Cat.meow();
+>Meow Meow Meow!!!
+
+
+Now one interesting thing about static method is when we use this keyword instead refering to a instance of class it refers to class itself
+
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+
+	static meow()
+	{
+		return `${this.breed} cat says meow`;
+	}
+}
+
+
+
+let c1=new Cat("terror","British Shorthair");
+
+Cat.meow();
+
+op:
+
+undefined cat says meow 
+
+----------
+
+now the question is although we gave the breed of cat as input in Cat class constructor why did it say undefined in the static method thats because breed is a property which is attached or tied to  instance of class and to access it we need to use instanceName.breed 
+
+but inside static method when we use this.breed it refers as Cat.breed and since breed is not a static varaible or static property which can be accessed by using class name it shows undefined
+
+
+and we can this via logging out 
+
+
+
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+
+	static meow()
+	{
+		console.log(this);
+	}
+}
+
+Cat.meow();
+>>
+----------------------------------------------------------
+output :
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+
+	static meow()
+	{
+		console.log(this);
+	}
+}
+-------------------------------------------------------
+
+
+so The different b/w class method and static method in other programming langauge like C++/Java and python is that class method have access of whole class and static method dosent but since js static method have access to class we treat it as class method
+
+
+So the best way to use a static method to do some functionality is 
+to pass the argument/parameter while calling the method onto Class cause static keyword have the access to class so we can directly pass any value without dot notation
+
+
+like :
+class Cat{
+	constructor(name,breed)
+	{
+		this.name=name;
+		this.breed=breed;
+	}
+	static geneticSpecies="felis catus";
+
+	static meow(breed)
+	{
+		console.log(breed);
+	}
+}
+let o1=new Cat("a","b");
+Cat.meow(o1.breed);
+
+
+To use static method we dont have to instantiate the class we can directly call them on class 

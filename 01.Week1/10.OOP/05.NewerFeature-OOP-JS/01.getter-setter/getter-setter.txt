@@ -1,0 +1,258 @@
+JavaScript Getter and Setter
+In JavaScript, there are two kinds of object properties:
+
+Data properties
+Accessor properties
+
+
+
+Data Property
+Here's an example of data property that we have been using in the previous tutorials.
+
+const student = {
+
+    // data property
+    firstName: 'Monica';
+};
+
+data property is something which gets associated with object and we can directly change them using the dot notation 
+
+but to change the Data property without touching the actual data itself  and those are Accessor properties 
+
+
+
+Accessor Property
+In JavaScript, accessor properties are methods that get or set the value of an object. For that, we use these two keywords:
+
+get - to define a getter method to get the property value
+set - to define a setter method to set the property value
+
+
+why do we need accessor properties 
+=-------------------------------
+
+suppose we have a class to calculate Circle diameter and we define it like this :
+
+
+class Circle{
+    
+    constructor(radius)
+    {
+        this.radius=radius;
+        this.diameter=2*radius;
+    }
+}
+
+//so this is how we define a class to calculate the diameter 
+
+let o1=new Circle(4);
+o1.radius;//4
+
+01.diameter;//8
+
+//now lets say we change the radius property 
+
+o1.radius=2;
+//will the diameter property will also change :
+
+//the answer is no cause the diameter property is not dynamic 
+//it gets the value at the time of initializing the class instancr
+//so when we later change the value of radius the property diameter
+//wont change 
+
+//lets see
+
+o1.diameter;//it gives us 8 the old value although the radius now 
+//is 2  so the diameter should be 4
+
+
+So we can solve this by 2 ways :
+
+1.create a function which change the value of diameter dynamically
+
+class Circle{
+    constructor(radius)
+    {
+        this.radius=radius;
+    }
+
+    diameter()
+    {
+        return this.radius*2;
+    }
+}
+
+let o1=new Circle(4);
+
+o1.radius;//4
+o1.diameter();//8
+
+//lets change the value of radisu:
+
+o1.radius=2;
+o1.diameter();//4//it changed value dynamically
+
+
+other way is to use accessor property
+
+2.Accessor property  
+
+->getter property helps in accessing the data property of the object so in this we can use the get keyword to define a method diameter() as a invisible/hidden property which gets the data property radius and and return the diameter
+
+
+via using getter or get property we dont have to change the diameter accessor property it gets changed dynamically
+
+
+class Circle{
+    constructor(radius)
+    {
+        this.radius=radius;
+    }
+    get diameter()
+    {
+        return this.radius*2;
+    }
+}
+
+let o1=new Circle(4);
+console.log(o1);
+console.log(o1.diameter);
+console.log(o1);
+
+
+
+JavaScript Getter
+In JavaScript, getter methods are used to access the properties of an object. For example,
+
+const student = {
+
+    // data property
+    firstName: 'Monica',
+    
+    // accessor property(getter)
+    get getName() {
+        return this.firstName;
+    }
+};
+
+// accessing data property
+console.log(student.firstName); // Monica
+
+// accessing getter methods
+console.log(student.getName); // Monica
+
+// trying to access as a method
+console.log(student.getName()); // error
+Run Code
+In the above program, a getter method getName() is created to access the property of an object.
+
+get getName() {
+    return this.firstName;
+}
+Note: To create a getter method, the get keyword is used.
+
+And also when accessing the value, we access the value as a property.
+
+student.getName;
+When you try to access the value as a method, an error occurs.
+
+console.log(student.getName()); // error
+
+
+
+
+
+Now comes the setter property:
+
+
+
+II.setter property:
+------------------------------
+
+Allows you to set the value of an object's data property:
+
+Sometime in an object we can see properties starting with 
+underscore like this _propertyName this means dont try to access this property so when ever we need to set changes to this type 
+of property we use setter method 
+
+via set keyword we define method to set the data property :
+
+class Circle{
+    constructor(radius)
+    {
+         this._radius=radius;
+    }
+
+    set Setradius(value)
+    {
+        if(value<0)
+        {
+            throw new Error("Radius is invalid")
+        }
+
+        else
+        {
+            this._radius=value
+        }
+    }
+
+    get getRadius()
+    {
+        return this._radius
+    }
+
+}
+
+
+let objCircle = new Circle(5);
+console.log(objCircle);//Circle{_radius:5}
+
+//now we dont want to access the _radius property directly so we will  use get and set
+//get -method:
+
+console.log(objCircle.getRadius);
+//5 
+
+
+now we can even change the radius :
+
+
+objCircle.setRadius=4;
+
+console.log(objCircle.getRadius);
+//4
+
+
+
+avaScript Setter
+In JavaScript, setter methods are used to change the values of an object. For example,
+
+const student = {
+    firstName: 'Monica',
+    
+    //accessor property(setter)
+    set changeName(newName) {
+        this.firstName = newName;
+    }
+};
+
+console.log(student.firstName); // Monica
+
+// change(set) object property using a setter
+student.changeName = 'Sarah';
+
+console.log(student.firstName); // Sarah
+Run Code
+In the above example, the setter method is used to change the value of an object.
+
+set changeName(newName) {
+    this.firstName = newName;
+}
+Note: To create a setter method, the set keyword is used.
+
+As shown in the above program, the value of firstName is Monica.
+
+Then the value is changed to Sarah.
+
+student.changeName = 'Sarah';
+Note: Setter must have exactly one formal parameter.

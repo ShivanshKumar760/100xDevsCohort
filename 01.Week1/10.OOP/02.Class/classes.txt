@@ -1,0 +1,453 @@
+classes :They are the building block that leads to object oriented programming .It is a user define data type which holds its own data members and function which is known as method 
+
+
+A class is like a blueprint to create multiple objec.Object are instance if class
+
+Ex:Consider the class of cars with different names and brand but all of them will share some common  properties and function
+
+->propeties of car which can b econsodered as data member can be :4 wheels ,speed limit ,range
+
+->car functionality can be considered as member function which is used to manipulate data member they can be :
+	->drive() ,applyBreak(),accelarate() etc
+
+A class is a user define data type in programming language like C/C++ and java which are strictly type but it is refered as blueprint to create objects like in js and python (key-value pair)
+
+
+->Data member are the variable and the member function are the function used to manipulate these variables together these data member and member function define the properties and behaviour of the object or the instance of class
+
+
+Note:An object is an instance of a class .when a object is defined ,no memory is allocated but when it is instantiated ie an object is created than memory is allocated 
+
+
+*Syntax for defining a class and object
+-----------------------------------------
+
+1.C/C++
+
+class ClassName
+{
+	access_specifier;//can be private ,public 
+	//or protected 
+
+	data_members;
+
+	member_function()
+	{
+		//code ;
+	}
+
+
+};//class name ends with a semi-colon
+
+
+Declaring Object in C++
+
+->[className objectName;]
+
+Accessing Data members and member function:The data member and member function of the class can be accessed using dot('.') operator with the object .
+
+
+
+Ex:
+----
+#include<iostream>
+using namespace std;
+
+class Hello{
+	public:
+	void printHello()
+	{
+		cout<<"hello"<<endl;
+	}
+};
+
+int main(void)
+{
+	Hello obj;//declaring / initiating class
+	//accessing data member or member function
+
+	obj.printHello();
+
+	return 0;
+}
+
+Output:
+hello
+
+
+JavaScript:
+
+In JavaScript we dont call class a user define data type
+
+and why is that well lets look at the syntax of initiating class in C++
+
+class Hello{
+	public:
+	void printHello()
+	{
+		cout<<"hello"<<endl;
+	}
+};
+
+int main(void)
+{
+/*
+to initilize a variable in C++ or C and even in java we use this syntax:
+
+	predefine_Datatype variable_Name;
+
+	and this same syntax strucutre is used while initializing a class
+
+	but instead of primitive data type we 
+	use class name and consider it as user 
+	define data type
+
+	 ie className object_name;
+
+	 or 
+
+	 userDefine_dataType objectname
+*/
+	Hello obj;//declaring / initiating class
+	//accessing data member or member function
+
+	obj.printHello();
+
+	return 0;
+}
+
+
+and since we use the same strucutre or schema of syntax in defining variable and object 
+ ie 
+
+ dataType/class_name varaibleName/objectName;
+
+ respectively we call them user define data type in C/C++ and Java 
+
+ But in Js to define variable we dont initialize them with predefine data type we just follow simple syntax 
+
+ <let/var/const> variable_name;
+
+ so no datatype is involved so in js 
+
+ class can be reffered to as :
+
+ Class:Is defined as the  blueprint for creating objects with similar properties and method.They offer a more structured approach to oop.
+
+
+ Syntax:
+ --------------
+ class className
+ {
+ 	constructor(var) {
+        this.var = var;
+    }
+    //we will see what is constructor later 
+    //on and how it works
+ } 
+
+
+ ->Now lets look why we need classes
+
+ So earlier while studying about object we made it sure that related function such as 
+ right triangle properties should be bundled in a object as properties and method to keep track of operation performence 
+
+ ie 
+
+
+ let myTri={a:3,b:4,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+
+so this is the schema object for mytrii but suppose we have to build schema object for two other triangle apart from this with different a and b:
+
+let triangle2 ->a and b be  4 and 2
+
+let triangle3-> and b be 5 and 12
+
+
+for them we have to type the whole object again twice 
+
+
+ let myTri1={a:3,b:4,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+
+ let myTri2={a:4,b:2,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+
+ let myTri3={a:5,b:12,getArea:function()
+{
+	return (this.a*this.b)/2;
+}
+
+So as it can be seen that we had to write this object schema 3 times again and again with different value and varaible name  and if there are more than 5 triangle it will be 
+a hectic task to type this schema again and again 
+
+so we can create a schema blueprint for this object using class
+
+Note :class keyword was not original to 
+javascript,it wasn't part of the early version of js it was added in ES5 or 2015
+its some syntactic sugar and we will learn what it does under the hood eventually.
+
+
+lets see how to define a class in js
+
+class Triangle{
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	getHypo
+	{
+		return Math.sqrt(this.a**2+this.b**2);
+	}
+}
+
+
+//to initialize a js class we use new keyword
+
+let mytri1=new Triangle();
+
+//since class are nothing but blueprint to 
+//js object
+//we can add and look element using dot 
+//notation and [] cause Using Triangle class
+//creates and object and here mytri1 is 
+//an object created by class Triangle
+
+mytri1.a=3;
+mytri1.b=4;
+
+//now if we console.log the mytri we can 
+//it will output a object with Triangle type
+//which just denotes that mytriq is Triangle 
+//class object 
+
+console.log(mytri1);//Triangel{a:3,b:4}
+//function in class created objects are hidden and can be accesed using dot notation
+
+
+mytri1.getArea();//will give 6 as op
+
+
+
+now if we look at the class code 
+
+class Triangle{
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	getHypo
+	{
+		return Math.sqrt(this.a**2+this.b**2);
+	}
+}
+let mytri=new Triangle()
+
+Here this keyword dosent mean that this className ie Triangle.a+Traiangle.b/2 it dosent mean that instead here this points to the object ie 
+
+(mytri.a+mytri.b)/2
+
+
+//and if we try to check the type of mytri
+//it will give us object casue eventually we 
+//are using class to create objects
+
+typeof mytri;
+//object as output 
+
+
+we can check if mytri object is instance of 
+class Traingle using instanceof
+
+mytri instanceof Triangle;
+
+//true 
+
+
+
+
+#Constructor
+------------------------
+
+So what are construcutor lets look at the 
+same Triangle class code 
+
+
+class Triangle{
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	getHypo
+	{
+		return Math.sqrt(this.a**2+this.b**2);
+	}
+}
+
+
+let mytri1=new Triangle();
+
+
+mytri1.a=3;
+mytri1.b=4;
+
+
+mytri1.getArea();//will give 6 as op
+
+
+so here in this above code of class we are just definig function into it which relies on
+two important arbitary variable that is a and b and every time we create an object we had to pass that a and b using dot notation seprately in order to use those function 
+
+
+and we can solve this problem via the use 
+of construcutor
+
+and for that we use a reserved function name 
+"constructor" to define a function which takes all the necessary value and add it to the object 
+
+so basically any method named "constructor" will be called on making a new instance 
+
+class Triangle
+{
+
+	//constructor 
+
+	constructor(a,b)
+	{
+		this.a=a;//this means the instance
+		//name that is the class--object in 
+		//current use 
+
+		this.b=b;
+	}
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	getHypo
+	{
+		return Math.sqrt(this.a**2+this.b**2);
+	}
+}
+
+
+let mytri1=new Triangle(3,4);
+
+mytri1.getArea();//will give 6 as op
+
+
+So we use Constructor to assign properties or input like below 
+
+class Triangle
+{
+
+	//constructor 
+
+	constructor(a,b)
+	{
+		this.a=a;//this means the instance
+		//name that is the class--object in 
+		//current use 
+
+		this.b=b;
+	}
+
+}
+
+
+and to validate data like this
+
+class Triangle
+{
+
+	//constructor 
+
+	constructor(a,b)
+	{
+		this.a=a;//this means the instance
+		//name that is the class--object in 
+		//current use 
+
+		this.b=b;
+	}
+
+}
+
+in this class code we can pass a and b as anything it can be boolean value or string but if we need number strictly we can do that by a lil modification:
+
+	//constructor 
+
+	constructor(a,b)
+	{
+
+		if(!Number.isFinit(a)||a<=0)
+		{
+			throw new Error(`Invalid a:${a}`)
+		}
+
+		if(!Number.isFinit(b)||b<=0)
+		{
+			throw new Error(`Invalid b:${b}`)
+		}
+
+
+		this.a=a;//this means the instance
+		//name that is the class--object in 
+		//current use 
+
+		this.b=b;
+	}
+
+Note that the constructor functions always just return undefined 
+
+
+#Instance Method 
+-------------------------------
+
+So what are methods -methods are nothing but the funtion placed in class are known as methods or formally(instance method cause it is bound to perticular instance of the class )
+
+They have acess to properites of object with the help of "this" keyword .They take arguments/return data like any other function 
+
+like 
+
+class Triangle{
+	getArea()
+	{
+		return (this.a + this.b)/2;
+		//here this will refer to instance
+		//of class that is the object
+	}
+}
+
+->One method can call another method using this which will refer to instance of the class that is the current object using this 
+
+class Triangle{
+	getArea()
+	{
+		return (this.a + this.b)/2;
+		//here this will refer to instance
+		//of class that is the object
+	}
+
+	describe()
+	{
+	return `Area is ${this.getArea().`};
+	}
+}
+
+
+if we try to acess the method or the property of the class without this keyword 
+it will throw a ReferenceError-its not in scope.
+
+

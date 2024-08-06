@@ -1,0 +1,80 @@
+Just like Private Fields we can have private method like this 
+
+#methodName()
+{
+	//code;
+
+}
+
+
+the private method can only be accesed within the class
+
+class Method
+{
+	#privateMethod()
+	{
+		return "This is a private method call"
+	}
+}
+
+let obj=new Method();
+//we can't access private method outside the class if we try to do 
+//so it  will give us error
+
+console.log(obj.#privateMethod());//this will give error
+
+//But we can make a getter property to access it from within the
+// class or even a normal instance method will also work
+
+
+New Program
+----------
+
+class Method
+{
+	#privateMethod()
+	{
+		return "This is a private method call"
+	}
+
+
+	publicMethod()
+	{
+		return this.#privateMethod;
+	}
+}
+
+let obj=new Method();
+
+
+console.log(obj.publicMethod());
+
+output:
+----------
+This is a private method call
+
+
+we can do the same with get accessor property
+
+
+New Code with get
+------------------
+
+class Method
+{
+	#privateMethod()
+	{
+		return "This is a private method call"
+	}
+
+
+	get publicMethod()
+	{
+		return this.#privateMethod;
+	}
+}
+
+let obj=new Method();
+
+
+console.log(obj.publicMethod;

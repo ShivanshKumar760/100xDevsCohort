@@ -1,0 +1,155 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+/* ul{
+    padding: 0;
+    list-style-type: none;
+   
+} */
+li{
+    margin: 0px;
+    padding: 0px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 10px 6px 10px #e6e2e2 ;
+}
+.nav-item1{
+    /* flex-grow: 10; */
+    font-size: 25px;
+    color:blue ;
+    margin-top: auto;
+    margin-bottom: auto;
+   
+}
+.nav-img{
+    width: 170px;
+    height: 20px;
+}
+/* .nav-item2{
+    flex-grow: 1;
+} */
+.nav-list{
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content:space-between;
+}
+li{
+    padding-left: 20px;
+}
+main{
+    margin-top: 10px;
+    /* border-style: dotted; */
+}
+.zerodha-landing-page{
+    text-align: center;
+   
+}
+.zerodha-landing-page-image{
+    height: 400px;
+    width: 1000px;
+}
+
+.invest{
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+}
+
+.about{
+    text-align: center;
+    
+}
+h2{
+    font-weight: 500;
+}
+.signup{
+    display: flex;
+    justify-content: center;
+}
+.signup-btn{
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+.signup-btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+
+  .nav-button {
+    font-family: Arial;
+    color: #666;
+    font-size: 20px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    border-radius: 0px;
+    text-decoration: none;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+.landing-section{
+    padding: 120px;
+    padding-top: 0px;
+}
+ .info-container{
+     margin-top: 50px;
+    margin-left: 153px;
+    margin-right: 153px;
+}  
+  .brokerimage{
+   width: 350px;
+   height: 350px;
+}
+  .content{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-broker{
+    width: 550px;
+   height: 350px;
+   align-items: center;
+}
+.features{
+    display: flex;
+}
+
+.press-image{
+    width: 500px;
+    height: 30px;
+}

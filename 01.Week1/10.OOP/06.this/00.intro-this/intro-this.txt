@@ -1,0 +1,360 @@
+till now whenever we were making class constructor or even in plain object when we were using function there is one keyword which we kept on using repetedly and that  is "this" now we know that when we use this -keyword it refers to object name or the instance of that class but we never got in detail of how it actually works:
+
+
+lets understand with an example lets take a plain javascript object that is pojo  
+
+const person={name:"Conan",
+	city:"Los angeles",
+	sing:function(){
+		returns "Sings la la la !";
+	}
+}
+
+//so this is a simple object 
+
+//lets try to access the function:
+
+console.log(person.sing())
+>>Sings la la la !
+
+
+//another way is to store the function in a variable :
+let pSing=person.sing;
+
+console.log(pSing());
+//this will also print the same thing:
+
+>>Sings la la la !
+
+
+//okay so both output where exactly the same 
+
+//now lets refactor the code a liltle  bit 
+
+
+New code 
+-----------
+const person={name:"Conan",
+	city:"Los angeles",
+	sing:function(){
+		returns `${this.name} Sings la la la !`;
+	}
+	//so now we are using this keyword lets see what-happens
+}
+
+//lets see what happens if we try to access the method directly and 
+//when we try to access it using variable :
+
+
+console.log(person.sing());
+
+//this gives us the output :
+>>Conan Sings la la la !
+
+//lets see what happens when we try to use variable to access the 
+//method  :
+
+let pSing=person.sing;
+
+console.log(pSing());
+
+//output will be 
+
+>>Sings la la la !--->now this is not the expected output cause in the function we can clearly see that there is string template which take name property and concatenate with "Sings la la la" but here that name didnt get concatenated casue the keyword "this" does not have the right value anymore it's not able to find this.name when we use the variable and why is that -->so before diving into the logic part that is why it's not able to receive the correct value when we use varaible lets what happens when we use class :
+
+
+class Person{
+	constructor(name,city)
+	{
+		this.name=name;
+		this.city=city;
+	}
+
+	sing()
+	{
+		return `${this.name} sings la la la!`;
+	}
+}
+
+//initiate the class 
+
+let p1=new Person("Conan","LA");
+
+//lets use the sing method on the instance of class or the object
+
+console.log(p1.sing());
+//output will be Conan sings la la la!
+
+//now lets use variable to call this function 
+
+let pSing=p1.sing;
+
+console.log(pSing());//this line will give error but if we see that when we used the same technique above this code with plain js object
+it didnt gave us error instead it gave us a output which was a bit different than expected :this code->
+
+/*
+const person={name:"Conan",
+	city:"Los angeles",
+	sing:function(){
+		returns "Sings la la la !";
+	}
+}
+
+//so this is a simple object 
+
+//lets try to access the function:
+
+console.log(person.sing())
+>>Sings la la la !
+
+
+//another way is to store the function in a variable :
+let pSing=person.sing;
+
+console.log(pSing());
+//this will also print the same thing:
+
+>>Sings la la la !
+
+
+//okay so both output where exactly the same 
+
+//now lets refactor the code a liltle  bit 
+
+
+New code 
+-----------
+const person={name:"Conan",
+	city:"Los angeles",
+	sing:function(){
+		returns `${this.name} Sings la la la !`;
+	}
+	//so now we are using this keyword lets see what-happens
+}
+
+//lets see what happens if we try to access the method directly and 
+//when we try to access it using variable :
+
+
+console.log(person.sing());
+
+//this gives us the output :
+>>Conan Sings la la la !
+
+//lets see what happens when we try to use variable to access the 
+//method  :
+
+let pSing=person.sing;
+
+console.log(pSing());
+
+//output will be 
+
+>>Sings la la la
+*/
+
+
+but when we used this variable method on class it gives us errro
+and the error is :
+
+TypeError: Cannot read properties of undefined (reading 'name')        
+
+so why is that? well for understanding the error or the logic behind why the code is not working the way we need it to for that we need to understand 
+
+
+
+JavaScript Function --so actually the truth is nothing in js is a function that every functionn which we define is a method that is a function associated with object 
+
+so even when we define a function like this below :
+
+function add2Num(a,b)
+{
+	return a+b;
+}    
+
+console.log(add2Num(4,5));
+//output
+>>9 
+
+it gives us the o/p 9 without calling the method on a object
+what happens behind the scene is the function gets called on a global object :
+
+
+In internet browser the global object is window :
+
+so when we call the function add2Num --it actually works like this in back -- window.add2Num(4,5); but we dont specify this window object cause it gets added in runtime dynamically by browser 
+
+
+and if we are using a runtime like nodejs than there is a global object name "global" itself so when we call a function like this :
+
+add2Num(4,5); //this is what happens behind the scene in nodejs
+	global.add2Num(4,5);
+
+
+
+and we can verify this casue as we know that "this" keywords refers to the object it is called upon
+
+function add2Num(a,b)
+{
+	console.log(this);
+	console.log(a+b);
+}
+
+add2Num(4,5);
+
+
+Output :
+
+
+Object [global] {                                                                                                       
+  global: [Circular *1],                                                                                                         
+  queueMicrotask: [Function: queueMicrotask],                                                                                    
+  clearImmediate: [Function: clearImmediate],                                                                                    
+  setImmediate: [Function: setImmediate] {                                                                                       
+    [Symbol(nodejs.util.promisify.custom)]: [Getter]                                                                             
+  },                                                                                                                             
+  structuredClone: [Function: structuredClone],                                                                                  
+  clearInterval: [Function: clearInterval],                                                                                      
+  clearTimeout: [Function: clearTimeout],                                                                                        
+  setInterval: [Function: setInterval],                                                                                          
+  setTimeout: [Function: setTimeout] {                                                                                           
+    [Symbol(nodejs.util.promisify.custom)]: [Getter]                                                                             
+  },                                                                                                                             
+  atob: [Function: atob],                                                                                                        
+  btoa: [Function: btoa],                                                                                                        
+  performance: Performance {                                                                                                     
+    nodeTiming: PerformanceNodeTiming {                                                                                          
+      name: 'node',                                                                                                              
+      entryType: 'node',                                                                                                         
+      startTime: 0,                                                                                                              
+      duration: 46.774799942970276,                                                                                              
+      nodeStart: 2.5959999561309814,                                                                                             
+      v8Start: 6.357599973678589,                                                                                                
+      bootstrapComplete: 30.084699988365173,                                                                                     
+      environment: 14.02839994430542,                                                                                            
+      loopStart: -1,                                                                                                             
+      loopExit: -1,                                                                                                              
+      idleTime: 0                                                                                                                
+    },                                                                                                                           
+    timeOrigin: 1715768060246.711                                                                                                
+  },                                                                                                                             
+  fetch: [AsyncFunction: fetch]                                                                                                  
+}                                                                                                                                
+9  
+
+
+So now we understand that every function in js is a method called onto a object nothing is just a function:
+
+so now if we recall that plain js object code
+
+
+
+class Person{
+	constructor(name,city)
+	{
+		this.name=name;
+		this.city=city;
+	}
+
+	sing()
+	{
+		return `${this.name} sings la la la!`;
+	}
+}
+let p1=new Person("Conan","LA");
+console.log(p1.sing());
+//output will be Conan sings la la la!
+//now lets use variable to call this function 
+
+let pSing=p1.sing;
+console.log(pSing);//[Function sing]
+console.log(pSing());//what happens here it calls global.pSing()
+
+/*
+so now pSing--carries a function/method 
+
+
+	sing()
+	{
+		return `${this.name} sings la la la!`;
+	}
+
+
+and this pSing is called upon a global object ie global.pSing() or just global.sing() but the thing sing() method has a line that contains this.name and here since global is the object "this" refers to global dosent have any name property so it will show undefine  but when we deal with class it becomes TypeError 
+that cause lets take a look at code 
+
+
+
+
+class Person{
+	constructor(name,city)
+	{
+		this.name=name;
+		this.city=city;
+	}
+
+	sing()
+	{
+		return `${this.name} sings la la la!`;
+	}
+}
+
+let p1=new Person("Conan","LA");
+
+console.log(p1.sing());
+//output will be Conan sings la la la!
+
+//now lets use variable to call this function 
+
+let pSing=p1.sing;
+
+console.log(pSing());//so this line will give error cause this method comes from a class and it's called on nothing which means it's 
+//not even called on global or window object cause a class needs to be initiated to use it method so when we isolates a class method
+//in a variable only that methods gets stored and class footprint to access it so its called on undefine object which produce error
+
+//so it's called like this undefined.pSing() or just undefined.sing()
+
+*/
+
+
+
+Now it's not nessecary that the "this" keyword will always refer to instance of class,object,global or window object 
+
+cause when we deal with static property and static method this keyword refers to class name cause static method and property are called on class
+
+
+class Name
+{
+	firstName="shivansh;
+	lastName="kumar"
+	static name()
+	{
+		return `THIS IS :${this}`;
+	}
+}
+
+
+Now when we call Cat.name();
+
+THIS IS:class Name{
+	firstName="shivansh;
+	lastName="kumar"
+	static name()
+	{
+		return `THIS IS :${this}`;
+	}
+	
+}
+
+
+so "this" can refer to class also sometimes
+
+
+But there are some ways we can overcome this problem of isolating methods in a varaible and calling them with global object and that is by using external methods which force this to work on a perticular object those methods are:
+
+
+1.call() 
+2.apply()
+3.bind()
+
+we will study each one of them in details  

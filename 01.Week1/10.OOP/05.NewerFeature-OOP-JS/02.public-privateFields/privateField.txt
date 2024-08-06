@@ -1,0 +1,58 @@
+private fields are totally opposite of the public field although we define them outside the constructor the private fields can only be accessed from within the class 
+
+Syntax:
+---------
+#privateFieldname;
+
+
+class Circle{
+	#radius;//priavte Field can only be change and accessed inside
+	// the class
+
+
+	constructor(radius)
+	{
+		this.#radius=radius;
+	}
+}
+
+let circle=new Circle(4);
+
+//now lets see what happens if we try to access the private 
+//property outside the class
+
+console.log(circle.#radius);//this line will give error cause we 
+//cant access private field outside the class 
+
+
+//so how can we access the private field and change its value if we 
+//want to so for that we can use instance method or getter and 
+//setter Accessor property
+
+class Circle{
+	#radius;//priavte Field can only be change and accessed inside
+	// the class
+
+
+	constructor(radius)
+	{
+		this.#radius=radius;
+	}
+
+	//get the property
+
+	get getRadius()
+	{
+		return this.#radius;
+	}
+
+	//set the radius
+
+	set setRadius(newValue)
+	{
+		this.#radius=newValue;
+	}
+}
+
+//so we can call the get and set property and this function will work behind the scene within the class to change value
+

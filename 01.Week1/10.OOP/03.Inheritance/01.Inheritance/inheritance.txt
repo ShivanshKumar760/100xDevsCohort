@@ -1,0 +1,154 @@
+So suppose we have a class like this :
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	describe()
+	{
+		return `Area of triangle with side 
+		${this.a} and ${this.b} is :${this.getArea()}`;
+	}
+
+}
+
+
+but suppose we need another class let it be 
+named ShyTriangle with getArea() method and describe method but describe method is a bit diffrent 
+
+
+ShyTriangle-BluePrint{
+	constructor(a,b)
+	{
+		Side-a=a;
+		Side-b=b;
+	}
+
+	getArea()
+	{
+		return-this (Side-a*Side-b)/2;
+	}
+
+	describe()
+	{
+		return-this "This method runs "
+	}
+
+}
+
+
+so as we can see that ShyTriangle class is very similar to Triangle class only difference is the describe method that is describe method is a bit different 
+
+
+so to define class ShyTriangle there are two things we can do one is 
+1.copy paste the code and just change the describe method like this 
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	describe()
+	{
+		return `Area of triangle with side 
+		${this.a} and ${this.b} is :${this.getArea()}`;
+	}
+
+}
+
+//copy code above and paste below 
+
+class ShyTriangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+	//changed describe function
+	describe()
+	{
+		return "This method runs"
+	}
+
+}
+
+
+but that leads to code duplication and memory usage 
+
+
+another method is use OOP concept that that is we can assume or take Triangle as the the parent class and inherit its properties into another class and the class which will inherit the properties of parent class will be consider as child class and if there is a code difference in child class we only have to write that perticular code :
+
+
+Syntax to inherit is :
+
+
+childClass extends parentClass{
+	//means we inherit all the propeties and 
+	//method of Triangle Class and we can 
+	//extend it by adding new code but that 
+	//code will be restricted to child class
+}
+
+
+Example ;:
+
+class Triangle{
+	constructor(a,b)
+	{
+		this.a=a;
+		this.b=b;
+	}
+
+	getArea()
+	{
+		return (this.a*this.b)/2;
+	}
+
+	describe()
+	{
+		return `Area of triangle with side 
+		${this.a} and ${this.b} is :${this.getArea()}`;
+	}
+
+}
+
+
+class ShyTriangle extends Triangle{
+	//it will inherit everything Triangle 
+	//class has to offer
+
+	//and we can write our own code that 
+	//will be specific to this child class 
+	//only
+
+	describe(){
+	return "This method runs"
+	}
+}
+
+
+
+Inheritance and Class Hierarchy:
+In object-oriented programming, inheritance 
+allows a class (the child class) to inherit properties and methods from another class (the parent class).
+The child class can extend the functionality of the parent class by adding its own properties and methods.

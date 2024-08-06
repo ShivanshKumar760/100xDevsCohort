@@ -1,0 +1,3 @@
+Now lets understand css box model a bit more in detail -to understand box model we need to understand that every thing inside html is 
+nothing but a block/box that h1 tag,p tag every is just a box which has certain property associated with it and that will remain constant  
+for every elemen/tag as everything is just a box. 

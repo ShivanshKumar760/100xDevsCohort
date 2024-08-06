@@ -1,0 +1,36 @@
+The CSS box model contains the different properties in CSS
+----------------------------------------------------------
+
+These are listed below :
+-------------------------
+>Border(border)
+>Margin(margin)
+>Padding(padding)
+>Content
+
+Now, we are going to determine the properties one by one in detail.
+
+Border Field
+----------------
+It is a region between the padding-box and the margin. Its proportions are determined by 
+the width and height of the boundary ie Screen.
+
+Margin Field
+----------------
+This segment consists of the area between the boundary of web Screen and the edge of the border.
+
+The proportion of the margin region is equal to the margin-box width and height. 
+It is better to separate the product from its neighbor nodes.
+
+Padding Field
+------------------
+
+This field requires the padding of the component. 
+In essence, this area is the space around the subject area and inside the border-box. 
+The height and the width of the padding box decide its proportions.
+
+Content Field
+--------------
+Material such as text, photographs, or other digital media is included in this area.
+It is constrained by the information edge, and its proportions are dictated by the 
+width and height of the content enclosure.

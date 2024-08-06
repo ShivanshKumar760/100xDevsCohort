@@ -1,0 +1,6 @@
+/* lets select the element using the css selector*/
+h1{
+    background-color: red;
+    color:white;
+    /* now background-color and color these are the two property every element will have and same goes for the box model which we will study later on */
+}

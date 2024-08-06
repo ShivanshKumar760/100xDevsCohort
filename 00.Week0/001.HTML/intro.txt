@@ -1,0 +1,114 @@
+So Now its time to dive into the world of html.HTML stands for 
+Hyper Text Markup langauge hmm whats a markup language  
+
+well A markup language is a text-encoding system which 
+specifies the structure and formatting of a document and 
+potentially the relationship between its parts.
+Markup can control the display of a document or enrich 
+its content to facilitate automated processing.
+
+So basically a Html is a markup langauge for the web which helps 
+in structuring out the webiste its like the skeleton of a website ,basically 
+it helps us organise/layout the elements on a website like image ,text etc
+
+there two important jargons while dealing with html and that 
+are HTML tags and HTML attributes 
+
+
+What are HTML tags ?
+---------------------------
+So html tags are basically keywords reserved by the browser to define and format the web page
+
+HTML tags are like keywords which defines that how web browser will format and display the 
+content. With the help of tags, a web browser can distinguish between an HTML content and a 
+simple content. HTML tags contain three main parts: opening tag, content and closing tag. 
+But some HTML tags are unclosed tags.
+When a web browser reads an HTML document, browser reads it from top to bottom and left to 
+right. HTML tags are used to create HTML documents and render their properties. Each HTML tags have different properties.
+
+An HTML file must have some essential tags so that web browser can 
+differentiate between a simple text and HTML text. You can use as many tags you want as per
+your code requirement.
+
+All HTML tags must enclosed within < > these brackets.
+Every tag in HTML perform different tasks.
+If you have used an open tag <tag>, then you must use a close tag </tag> (except some tags)
+
+
+Syntax
+<tag> content </tag> //this in whole creates a HTML element ie <tag> plus content 
+
+
+some of the famous html tags are :
+1.<head></head>----->contains all the meta data related to website like meta tag and title tag 
+2.<title></title>---->title tag goes inside head tag 
+3.<body></body>------>this defines the main body of web site and every tag will be nested inside it 
+
+4.<h1></h1>,<h2></h2>,<h3></h3>,<h4></h4>,<h5></h5> and <h6></h6> all are heading tag for website 
+heading and each higher number heading tag has low prefrence of order compare to lower number tag
+h1 has the highest prefrence 
+
+
+5.<p></p>---->paragarph tag
+6.<img/> tag  is a self closing tag ie it dosent have a opening and closing tag used to insert image 
+in a web site
+
+7.<a></a>->annchor tag is used to link another webpage with a content 
+
+8.<button></button> tag 
+
+9.<div></div>->The <div> tag defines a division or a section in an HTML document.The 
+<div> tag is used as a container for HTML elements - which is then styled with CSS or
+manipulated with JavaScript
+
+
+10.<main></main>
+The <main> tag specifies the main content of a document.
+The content inside the <main> element should be unique to the document. 
+It should not contain any content that is repeated across documents such as sidebars, 
+navigation links, copyright information, site logos, and search forms.
+
+Note: There must not be more than one <main> element in a document. 
+The <main> element must NOT be a descendant of an <article>, <aside>, <footer>, <header>, 
+or <nav> element.
+
+
+11.<nav></nav>
+The <nav> tag defines a set of navigation links.
+Notice that NOT all links of a document should be inside a <nav> element. 
+The <nav> element is intended only for major blocks of navigation links.
+
+Browsers, such as screen readers for disabled users, can use this element to 
+determine whether to omit the initial rendering of this content.
+
+
+
+
+11.<section></section>->The <section> tag defines a section in a document.
+
+12.<aside></aside>->The <aside> tag defines some content aside from the content it is placed in.
+The aside content should be indirectly related to the surrounding content.
+Tip: The <aside> content is often placed as a sidebar in a document.
+Note: The <aside> element does not render as anything special in a browser. However, you can use CSS to style the <aside> 
+element (see example below).
+
+
+
+13.<br/>-->br tag is a self closing tag which basically means break line tag ie break the line -->why we need this tag 
+so suppose we have a paragarph tag like this <p></p> with a content inside of it <p>This is Intro to web development</p>
+now this content will be showed on screen in a single line and if there is a large content it will be shown in the max 
+width of browser window to control line breakage we use <br> like <p>This is <br>intro to Web development</p>
+
+This is 
+intro to Web development
+
+14.<hr/>->The <hr> tag defines a thematic break in an HTML page (e.g. a shift of topic).
+the <hr> element is most often displayed as a horizontal rule that is used to separate content (or define a change) in an HTML page.
+
+15.<span></span>->The <span> tag is an inline container used to mark up a part of a text, or a part of a document.
+The <span> tag is easily styled by CSS or manipulated with JavaScript using the class or id attribute.
+The <span> tag is much like the <div> element, but <div> is a block-level element and <span> is an inline element.
+
+16.<em></em>->The <em> tag is used to define emphasized text. The content inside is typically displayed in italic.
+
+17.<i></i>->is use to display content in italic form 

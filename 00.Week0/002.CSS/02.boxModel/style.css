@@ -1,0 +1,33 @@
+div{
+    /* text-align: center; */
+    
+    background-color: red;
+    /* now box model says every element has :
+        1.border
+        2.border-width
+        3.box or element width
+        4.height
+        5.padding pargin
+        
+
+    */
+    /* padding:toppx rightpx bottompx leftpx; */
+    padding:30px 20px 10px 50px;
+    padding: 0px;
+    padding: 30px;
+    border-style:solid;
+    /* border-width:top right bottom left */
+    border-width: 10px 20px 30px 5px;
+    /* reset */
+    border-width: 0px;
+    border-width: 40px;
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+h1{
+    /* display: inline; */
+    background-color: yellow;
+    /* text-align: center; */
+    /* margin-left: 50%; */
+}
