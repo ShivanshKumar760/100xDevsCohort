@@ -1,0 +1,77 @@
+The For In Loop-The JavaScript for in statement loops through the properties of an Object:
+
+The for-in loop in JavaScript iterates over the enumerable properties of an object, executing a specified block of code for each property. 
+It’s commonly used for iterating through object properties or elements in an array.
+
+Syntax:
+
+for (let i in obj1) {
+    // Prints all the keys in
+    // obj1 on the console
+    console.log(i);
+}
+
+
+for in Loop Important Points
+Use the for-in loop to iterate over non-array objects. Even though we can use a for-in loop for an array, it is generally not recommended. Instead, use a for-of loop for looping over an array.
+The properties iterated with the for-in loop also include the properties of the objects higher in the Prototype chain.
+The order in which properties are iterated may not match the properties that are defined in the object.
+
+for..in Loop in array
+------------------------
+const array = [1, 2, 3, 4, 5];
+
+// Using for-of loop for array
+for (const value in array) {
+  console.log(array[value]);
+}
+
+
+Output
+1
+2
+3
+4
+5
+
+
+Example 2: For-in loop iterates over the properties of an object and its prototype chain’s properties. 
+If we want to display both properties of the “student1” object which belongs to that object only and the prototype chain, then we can perform it by for in loop.
+
+
+const courses = {
+
+    // Declaring a courses object
+    firstCourse: "C++ STL",
+    secondCourse: "DSA Self Paced",
+    thirdCourse: "CS Core Subjects"
+};
+
+// Creating a new empty object with
+// prototype set to courses object
+const student1 = Object.create(courses);
+
+// Defining student1 properties and methods
+student1.id = 123;
+student1.firstName = "Prakhar";
+student1.showEnrolledCourses = function () {
+    console.log(courses);
+}
+
+// Iterating over all properties of
+// student1 object
+for (let prop in student1) {
+    console.log(prop + " -> "
+        + student1[prop]);
+}
+
+
+Output
+id -> 123
+firstName -> Prakhar
+showEnrolledCourses -> function () {
+    console.log(courses);
+}
+firstCourse -> C++ STL
+secondCourse -> DSA Self Paced
+thirdCourse -> CS Core Subjects

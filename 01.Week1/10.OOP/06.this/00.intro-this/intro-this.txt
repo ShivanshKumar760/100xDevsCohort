@@ -154,7 +154,7 @@ console.log(pSing());
 */
 
 
-but when we used this variable method on class it gives us errro
+but when we used this variable method on class it gives us error
 and the error is :
 
 TypeError: Cannot read properties of undefined (reading 'name')        
@@ -163,7 +163,7 @@ so why is that? well for understanding the error or the logic behind why the cod
 
 
 
-JavaScript Function --so actually the truth is nothing in js is a function that every functionn which we define is a method that is a function associated with object 
+JavaScript Function --so actually the truth is nothing in js is a function and that every functionn which we define is a method that is a function associated with object 
 
 so even when we define a function like this below :
 
