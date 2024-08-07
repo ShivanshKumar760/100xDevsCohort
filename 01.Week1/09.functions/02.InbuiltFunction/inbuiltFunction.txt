@@ -1,0 +1,9 @@
+In Every Programming language there are built in functions that are pre built into Programming
+language and in some language they are known as method 
+
+few method which we have disscused till now are 
+
+.length , .pop() ,.push() which are associated with array data structures 
+
+Similary there is a Math object in JavaScript and there are many function associated with it .
+lets look into it .
