@@ -1,0 +1,251 @@
+//So javaScript offers Math class which has its own property and function also known as methods
+//it allows us to perform mathematical task on numbers 
+
+//Math object or class unlike other class has no construcutor.The Math object/class is static
+
+//All methods and properties can be used without creating a Math object first
+
+//1.Math class properties :The syntax for any Math property is -Math.propertyName
+
+//->JavaScript provide 8 mathematical constants that can be accessed as Math Properties
+
+console.log(`1.Math.PI:returns the pi value that is  ${Math.PI}`);
+console.log(`2.Math.E returns the euler numberthat is ${Math.E}`);
+console.log(`3..Math.SQRT2 returns the square root of 2 ${Math.SQRT2}`);
+console.log(`4.Math.SQRT1_2 returns the square root of half ie 1/2 ${Math.SQRT1_2}`);
+console.log(`5.Math.LN2 returns the natural log of 2 ie ${Math.LN2}`);
+console.log(`6.Math.LN10 returns the natural log of 10 ie ${Math.LN10}`);
+console.log(`7.Math.LOG2E return the base 2 log e ie ${Math.LOG2E}`);
+console.log(`8.Math.LOG10E returns the base 10 log e ie ${Math.LOG10E}`);
+
+
+//2.Math Methods 
+/*
+->The syntax for using any method or function in Math class is :Math.methodName(number)
+
+i)Number(floating number ie decimal pointed number) to Integer
+->There are 4 common method to round a number to an integer :
+
+i.a)Math.round(x):returns x rounded to it nearest integer
+    ex:
+    Math.round(4.4);
+    >>>4 
+
+    Math.round(4.6);
+    >>>5
+
+    variableName=Math.round(Number.x);
+    |____1.if x<5 rounded number is Number or else 2.if x>5 then rounded number is Number+1
+
+
+
+i.b)Math.ceil(x):returns x rounded upto its highest next number 
+
+    example:
+    let x=4.3;
+    let y=4.6;
+    console.log(Math.ceil(x));
+    console.log(Math.ceil(y));
+
+    >>>5
+    >>>5
+
+
+
+i.c)Math.floor(x): returns the value of x rounded down to its nearest integer 
+
+    example:
+    let x=4.3;
+    let y=4.6;
+    console.log(Math.floorl(x));
+    console.log(Math.floor(y));
+
+    >>>4
+    >>>4
+
+    so it basically truncates or removes the decimal part and returns the integer part to us 
+
+
+    Math.floor(x.y)-->x
+
+
+Similar to floor there is another function in Math class and that is :
+
+i.d)Math.trunc(x.y):returns the integer part ie x via truncating the decimal part 
+
+    ex:
+    Math.trunc(4.9)->4
+
+
+So now the question is wheather both the Math.trunc() and Math.floor are same well the short answer is:NO
+
+lets see how -lets use both the function on a negative number and see the result .
+
+Math.trunc(-4.6):-4
+
+Math.floor(-4.6):-5
+
+so Math.trunc() returns the integer part but Matb.floor returns a rounded down version to lowest number 
+in negative number 
+
+
+ii)sign method:
+->Math.sign(x) returns a integer number with sign ie if x is negative it will return -1 ,if x is null
+it will return 0 and if x is positive is will return +1
+
+console.log(`5.a)sign function on negative 4 ie -4 will give ${Math.sign(-4)}`);//-1
+console.log(`5.b)sign function on null value  ie 0 will give ${Math.sign(0)}`);//0
+console.log(`5.c)sign function on positve 4 ie 4 will give ${Math.sign(+4)}`);//1
+
+
+iii)pow method:
+->Math.pow(x,y) returns the value of x to the power of y
+
+Math.pow(8,2)->64
+
+iv)sqrt method :
+->Math.sqrt(x) returns the square root of x 
+
+let x=64;
+Math.sqrt(x);//8
+
+
+v)abs method:
+->Math.abs(x) will return the absolute value ie the positive value of x via removing the sign
+ex:
+Math.abs(-4.9);//4.9
+
+
+vi)sin() method:
+Math.sin(x) returns the sine value(a value b/w -1 to 1) of the angle x in radians but if we want to use
+x in degree instead of radians than we have to convert degree into radian
+
+Angle in radian=(Angle in degree x PI)/180
+
+Math.sin(90*Math.PI/180);
+
+
+vii)cos method :
+Math.cos(x) returns the sine value(a value b/w -1 to 1) of the angle x in radians but if we want to use
+x in degree instead of radians than we have to convert degree into radian
+
+Angle in radian=(Angle in degree x PI)/180
+
+Math.cos(90*Math.PI/180);
+>>6.123233995736766e-17
+
+
+viii)Math.min() and Math.max()
+->Math.min() and Math.max() can be used to find the lowest or highest value in list of argument
+
+
+Math.min(0,150,30,20,-8,-200);
+>>>-200
+
+Math.max(0,150,30,20,-8,-200);
+>>>150
+
+ix)Math.random()
+->Returns a number b/w 0(which is inclusive) and 1(which is exclusive)
+Math.random()>>genrate a number between 0 to 0.999999999 but never crosses 1 
+
+so if we want a number b/w 0 to n we will use Math.random()*n to genrate a number b/w
+0 to n-1 to include n add +1
+
+x)Math.log() meethod 
+->Math.log() method returns the natural log of x .The natural log returns the time needed to 
+reach a certain level of growth
+
+ex:
+Math.log(1);
+>>>0
+Math.log(2);
+>>>0.6931471805599453
+
+xi)Math.log2() method
+->returns the base 2 logarithm of x
+Math.log2(8);
+>>>3
+
+xii)Math.log10() method
+->returns the base 10 logarithm of x
+Math.log10(1000);
+>>>3
+*/
+
+console.log(`1.a)round method : if x in Number.x is less than 5 then round of 4.4 is
+${Math.round(4.4)}`);
+
+
+console.log(`1.b)round method : if x in Number.x is greter than or equal to 5 then round of 4.6 is
+${Math.round(4.6)}`)
+
+
+console.log(`2)Math.ceil(Number.x) return Number.x rounded upto its highest next number that is Number+1 
+ceil method on 4.3 is ${Math.ceil(4.3)}`);
+
+
+console.log(`3)Math.floor(x.y) removes the decimal part and give back the integer part so floor of 
+4.7 is ${Math.floor(4.7)}`);
+
+console.log("-------------Similar to floor there is another function in Math class and that is :------------");
+
+
+console.log(`4)Math.trunc(x.y) truncates the decimal part so trunc of 4.9 is ${Math.trunc(4.9)}`);
+
+console.log("--------------------------------");
+console.log("5)Math.sign(x) returns a integer number with sign ie if x is negative it will return -1 ,if x is null\
+it will return 0 and if x is positive is will return +1");
+
+console.log(`5.a)sign function on negative 4 ie -4 will give ${Math.sign(-4)}`);
+console.log(`5.b)sign function on null value  ie 0 will give ${Math.sign(0)}`);
+console.log(`5.c)sign function on positve 4 ie 4 will give ${Math.sign(+4)}`);
+
+
+console.log("-------------------------------------------");
+console.log(`Math.pow(x,y) method return the value of x to the power of y ie Math.pow(8,2) is \
+${Math.pow(8,2)}`);
+
+console.log("---------------------------------------------");
+
+console.log(`Math.sqrt(x) returns the value of square root of x so Math.sqrt(64) is \
+${Math.sqrt(64)}`);
+console.log("---------------------------------------------");
+console.log(`Math.abs(x) will return the absolute value ie the positive value of x via removing the sign\
+ hence the abs value of -4.9 will be ${Math.abs(-4.9)}`);
+console.log("---------------------------------------------");
+console.log(`Math.sin(x) returns the sine value(a value b/w -1 to 1) of the angle x in radians but if we want to use
+x in degree instead of radians than we have to convert degree into radian
+
+Angle in radian=(Angle in degree x PI)/180
+
+Math.sin(90*Math.PI/180) should give us ${Math.sin(90*Math.PI/180)}`);
+
+console.log("---------------------------------------------");
+console.log(`Math.cos(x) returns the sine value(a value b/w -1 to 1) of the angle x in radians but if we want to use
+x in degree instead of radians than we have to convert degree into radian
+
+Angle in radian=(Angle in degree x PI)/180
+
+Math.cos(90*Math.PI/180) will be ${Math.cos(90*Math.PI/180)}`);
+console.log("---------------------------------------------");
+console.log("Math.min() and Math.max() can be used to find the lowest or highest value in list\
+of arguments");
+console.log();
+console.log(`Lowest value in a list of 0,150,30,20,-8,-200 will ${Math.min(0,150,30,20,-8,-200)} and\
+ Highest value in the list of 0,150,30,20,-8,-200 will be ${Math.max(0,150,30,20,-8,-200)}`);
+
+ console.log("---------------------------------------------");
+ console.log("Math.random()\
+ ->Returns a number b/w 0(which is inclusive) and 1(which is exclusive)\
+ Math.random()>>genrate a number between 0 to 0.999999999 but never crosses 1 \
+ \
+ so if we want a number b/w 0 to n we will use Math.random()*n to genrate a number b/w\
+ 0 to n-1 to include n add +1");
+
+ console.log();
+ console.log();
+ console.log(`Genrating random number ${Math.random()}`);
+
+ console.log();
+ console.log(`genrating random number b/w 0 to 6(n) ${Math.random()*6}`);

@@ -1,0 +1,36 @@
+JavaScript Built-in Functions
+JavaScript comes with a rich set of built-in functions that perform various tasks without requiring you to write custom code.
+
+ These functions can be categorized into several groups:   
+
+Global Functions
+These functions are available directly in the global scope.   
+
+parseInt() and parseFloat(): Convert strings to numbers.   
+isNaN(): Checks if a value is NaN (Not a Number).   
+isFinite(): Checks if a value is a finite number.   
+encodeURI() and decodeURI(): Encode and decode URIs.   
+eval(): Evaluates a JavaScript string as code. (Use with caution!)   
+Math Object
+Provides mathematical constants and functions.   
+
+Math.PI, Math.E: Mathematical constants.   
+Math.abs(), Math.ceil(), Math.floor(), Math.round(), Math.random(): Common mathematical operations.
+Math.sin(), Math.cos(), Math.tan(), etc.: Trigonometric functions.
+String Object
+Provides methods for manipulating strings.   
+
+length: Returns the length of a string.   
+charAt(), charCodeAt(), indexOf(), lastIndexOf(), substring(), slice(), split(), concat(), toUpperCase(), toLowerCase(), trim(): Common string operations.
+Array Object
+Provides methods for manipulating arrays.   
+
+length: Returns the length of an array.   
+push(), pop(), shift(), unshift(), splice(), join(), reverse(), sort(), concat(), indexOf(), lastIndexOf(), slice(), map(), filter(), reduce(): Array manipulation methods.
+Date Object
+Provides methods for working with dates and times.   
+
+new Date(): Creates a new Date object.   
+getFullYear(), getMonth(), getDate(), getHours(), getMinutes(), getSeconds(), getMilliseconds(): Get date and time components.
+setFullYear(), setMonth(), setDate(), setHours(), setMinutes(), setSeconds(), setMilliseconds(): Set date and time components.
+Note: These are just a few examples, and JavaScript offers many more built-in functions and methods. You can find a comprehensive list and detailed explanations in the MDN Web Docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects   
