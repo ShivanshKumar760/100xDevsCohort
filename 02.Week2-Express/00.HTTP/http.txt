@@ -1,0 +1,27 @@
+so what is a http and how does it play an important role in backend applications 
+
+So Http stands for Hyper Text Transfer Protocol as u can see its in the name that it is basically a Protocol that is a set of rule to Transfer hyper Text which are basically html
+pages ->so we can conculde at a high level that http is a Protocol which binds a set of rule for machine to communicate or specifically for website ie client to communicate with server
+ie http allows frontend to communicate with backend
+
+
+An overview of HTTP
+HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, 
+which means requests are initiated by the recipient(client), usually the Web browser. A complete document is typically constructed from resources such as 
+text content, layout instructions, images, videos, scripts, and more.
+
+
+
+Web document or client ------------------>sends a request that get this document like html page and styling sheet to render site to backend---->Server
+Web document or client<---Sends html page and styling script after receving the request from frontend-----Server
+
+
+Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client are called requests and the messages sent 
+by the server as an answer are called responses.
+
+So Http is basically a handshake protocol which means that client sends a request and recives a response from server establishing a handshake
+
+
+Frontend or the client is what user interact with the  user interface created by using html css js and react is what serves as frontend 
+Backend are what the frontend interacts with mere user do not have the authority to interact with backend untill and unless a backend engineer or a engineer is involved in the process 
+backend host server and database its written in js,java,python,golang,rust,c or c++
