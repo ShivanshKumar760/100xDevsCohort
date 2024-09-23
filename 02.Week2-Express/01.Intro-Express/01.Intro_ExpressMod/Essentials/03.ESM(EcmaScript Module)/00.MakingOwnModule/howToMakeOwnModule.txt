@@ -1,0 +1,71 @@
+Now via using The ESM Technique we can easily built our own module in JavaScript like we can
+write function and classes in one file and then use those file function and class in other 
+file or any number of file via ESM import-export technique so that we dont have to write it 
+again and again
+
+so how to make our own module:
+
+lets take an example lets make a program with a function to add two number and then use that 
+function in another program
+
+//add.js 
+function add(num1,num2)
+{
+    return num1+num2;
+}
+//now to use this function in another program we will have to export this function
+//syntax :
+    //export {function_name};
+export {add};
+
+
+Now lets write the program to use this function via import
+
+//add2.js
+import add from "./add.js";
+
+//now we can use this function
+console.log(add(2,2));
+
+
+Now there is one thing to take in consideration is that import can only be used with module 
+
+so to use the above we will have to initiate a package.json and in that we will set the type
+to module and the entry point should be of that program which use the import statement
+
+
+{
+  "name": "add",
+  "version": "1.0.0",
+  "description": "",
+  "main": "add2.js",//entry point
+  "type": "module",//this type should be set to module
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shiv",
+  "license": "ISC"
+}
+
+or another thing which can be done is we can rename the file from .js to .mjs which stands 
+for Module JavaScript cause import can only be used in module
+
+
+//add.mjs 
+function add(num1,num2)
+{
+    return num1+num2;
+}
+//now to use this function in another program we will have to export this function
+//syntax :
+    //export {function_name};
+export {add};
+
+
+Now lets write the program to use this function via import
+
+//add2.mjs
+import add from "./add.mjs";
+
+//now we can use this function
+console.log(add(2,2));

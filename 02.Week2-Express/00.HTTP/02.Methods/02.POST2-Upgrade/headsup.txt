@@ -1,0 +1,3 @@
+So now insted of using a api tool like POSTMAN we will build a frontend website with just html
+and with get handler we will serve that html website and we will use html form with post method 
+and action of from will have that route name where form needs to be submited 

@@ -1,0 +1,16 @@
+To install external package we use npm and command is :
+
+    npm i package_name or npm install package_name
+
+after that if there is a package.json file our new external package will be added in that
+package.json file under the dependencies name key and if the package.json file is not 
+present then it will be created.
+
+lets see a example :
+    npm i sillyname
+    
+{
+  "dependencies": {
+    "sillyname": "^0.1.0"
+  }
+}

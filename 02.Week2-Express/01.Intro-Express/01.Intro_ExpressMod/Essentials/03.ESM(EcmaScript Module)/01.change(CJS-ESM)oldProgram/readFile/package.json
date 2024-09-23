@@ -1,0 +1,12 @@
+{
+  "name": "readfile",
+  "version": "1.0.0",
+  "description": "Reading Example file via ESM",
+  "main": "read.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shivansh",
+  "license": "ISC"
+}

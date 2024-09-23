@@ -1,0 +1,66 @@
+JavaScript modules
+
+This guide gives you all you need to get started with JavaScript module syntax.
+
+A background on modules
+JavaScript programs started off pretty small —
+ most of its usage in the early days was to do isolated scripting tasks,
+  providing a bit of interactivity to your web pages where needed, so l
+  arge scripts were generally not needed. Fast forward a few years and we now 
+  have complete applications being run in browsers with a lot of JavaScript, 
+  as well as JavaScript being used in other contexts (node.js, for example).
+
+It has therefore made sense in recent years to start thinking about 
+providing mechanisms for splitting JavaScript programs up into separate modules that 
+can be imported when needed. node.js has had this ability for a long time, and 
+there are a number of JavaScript libraries and frameworks that enable module usage 
+(for example, other CommonJS and AMD-based module systems like RequireJS, and more recently Webpack and Babel).
+
+Where previously in old js before version 12 of nodejs we use to use promises ie we use 
+to take help of CommonJS require method to use a module/libraries functionality
+like this 
+
+const fs = require("node:fs")//this acquire the fs module from nodejs and put it in fs variable
+//after this we can use file systems functionality via dot method
+
+fs.writeFile("msg.txt","Hello",(err)=>{
+    if(err) throw err;
+    else
+    {
+        console.log("File saved");
+    }});
+
+
+and this was quite long
+
+The good news is that modern browsers have started to support module functionality natively,
+and this is what this article is all about. This can only be a good thing —
+browsers can optimize loading of modules, making it more efficient than having to 
+use a library and do all of that extra client-side processing and extra round trips.
+
+Use of native JavaScript modules is dependent on the import and export statements
+
+
+Introduction#
+ECMAScript modules are the official standard format to package JavaScript code for reuse. 
+Modules are defined using a variety of import and export statements.
+
+The following example of an ES module exports a function:
+
+// addTwo.mjs
+function addTwo(num) {
+  return num + 2;
+}
+
+export { addTwo }; 
+
+The following example of an ES module imports the function from addTwo.mjs:
+
+// app.mjs
+import { addTwo } from './addTwo.mjs';
+
+// Prints: 6
+console.log(addTwo(4)); 
+
+node.js fully supports ECMAScript modules as they are currently specified and provides 
+interoperability between them and its original module format, CommonJS.

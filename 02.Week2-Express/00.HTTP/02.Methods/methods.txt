@@ -1,0 +1,404 @@
+HTTP Methods :as we got to know that http is nothing but a set of rule for client to communicate 
+with server or backend(Hyper Text Transfer Protocol) just like how us Human communicate
+
+like we as Human when we want to communicate with each other 
+or Transfer our thoughts with each other we use 
+language it can be english ,it can be hindi,it can
+be french ,it can be bengali etc so this language 
+act as thought transfer protocol :
+
+So using language we make ceratin sound and the  travel
+across the air to the person we are trying to communicate
+
+
+Person1->Hey------sounds travel through air->Person2
+
+Person1<---Sound travel through air---Hi<--Person2
+
+
+Similarly when computer want to talk to each other 
+they need HTTP or Hyper Text Transfer Protocol 
+
+Comp1--->req[http followed]--->Comp2[Server]
+[client]
+
+
+Comp1<---[http followed]response---Comp2[Server]
+[client]
+
+
+Lets learn the basic vocab for computer communication 
+which are followed according to http 
+
+
+Request vocab:
+
+1.Get:Is the very first communication vocab in http
+and we use get when we need to Request or want server
+to response us with a resource needed by  the  user
+it cab be a html website,it can be a image ,a peice 
+of data ...anything
+
+
+2.Post:In post req we send resource to server mostly
+by using a html form binded with a POST method to let 
+that html form know this will be used to post data and 
+Hence that where post req is used its basically used to
+post some data onto the server and receive a response
+related to data :
+
+Example :like we have a form in our website for signing 
+up then our email and password will be posted to server
+in ordered to get registered on web site and out Server
+will response with a peice of data like "You are signed up"
+
+or "Thanks for signing"-->this is done with a post Request
+
+3.put :put request is for updating the resource via 
+completely replacing the current resource with new resource
+
+4.patch:patch request is also used for updating but unlike 
+put it does not completely replace the resource but 
+patch it up with new resource ie old resource and new 
+resource together :
+
+
+We can understand this using a anology of amazon parcel:
+suppose we ordered a bicycle from amazon and the rim of 
+tyre is broken now when we got in touch with amazon
+customer service they offerd us two solution:
+
+sol1:replace the entire cycle with new one this is 
+put request
+
+
+sol2:replace the old rim with new rim this is patch 
+request
+
+
+5.delete :this request delete the resource from server 
+or database from client side
+
+
+lets look at the basic boilerplate code of express:
+
+import express from "express";
+const app=express();
+
+app.listen(3000,()=>{
+    console.log("Server running on port 3000");
+    }
+);
+
+
+this above code means is import the express module and 
+assign that that express module to a app object 
+and start the server at port 3000
+
+So the server is running at port 3000:
+
+
+but when we will try to hit localhost:3000 it will give 
+us back a response Cannot GET/
+
+Now by default when we hit this endpoint:
+localhost:3000-->it gets diverted to another route:
+which is localhost:3000/ where this "/" means home end 
+point and when the server is hitted with this 
+endpoint"/" by default it means  client is asking 
+for some resource and since in our code we havent 
+specified what to (get) at this endpoint"/"
+
+Server just response us back with Cannot GET /
+ie not able to process GET request for this endpoint
+
+let define a get method to load up a home page 
+
+syntax of get Method is :
+
+object_Which_Carries(express).get("route",function(req,res)
+{
+    //code to respond with
+}
+)
+
+Lets see it in action:
+
+app.get("/",(req,res)=>{
+res.send("<h1>Hello World</h1>"});
+
+and we can also see what exactly does 
+a request from browser look like by console logging it :
+
+app.get("/",(req,res)=>{
+    console.log(req);
+    res.send("<h1>Hey ,Welcome to world of web dev</h1>");
+});//so when we will hit this end point / and the sevrer will respond with html tag in our node console we will be 
+//able to see the request from client to sevrer
+
+But the thing is when we will console log it the info or the request that will get logged will contain data of browser,cookies
+,node data yada yada which arent that necessary for us so we can narrow down the data via taping into rawHeaders property of 
+request
+
+app.get("/",(req,res)=>{
+    //console.log(req);
+    console.log(req.rawHeaders);
+    res.send("<h1>Hey ,Welcome to world of web dev</h1>");
+});
+
+rawHeaders are basically a list of a key/value pairs 
+that come from where the request originated. 
+
+
+this what it will look like :
+Server is running on port 3000
+[
+  'Host',
+  'localhost:3000',
+  'Connection',
+  'keep-alive',
+  'sec-ch-ua',
+  '"Chromium";v="128", "Not;A=Brand";v="24", "Microsoft Edge";v="128"',
+  'sec-ch-ua-mobile',
+  '?0',
+  'sec-ch-ua-platform',
+  '"Windows"',
+  'Upgrade-Insecure-Requests',
+  '1',
+  'User-Agent',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
+  'Accept',
+  'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+  'Sec-Fetch-Site',
+  'none',
+  'Sec-Fetch-Mode',
+  'navigate',
+  'Sec-Fetch-User',
+  '?1',
+  'Sec-Fetch-Dest',
+  'document',
+  'Accept-Encoding',
+  'gzip, deflate, br, zstd',
+  'Accept-Language',
+  'en-GB,en;q=0.9,en-US;q=0.8,en-IN;q=0.7',
+  'Cookie',
+  'Pycharm-1983b88d=c01f67a7-2a50-406b-94de-bd964507d94f; Webstorm-c914847e=967e05ff-f8fd-4ac8-b822-000333723361',
+  'If-None-Match',
+  'W/"29-mNdjvzGI/5ItgsUZxw54eKhm5RE"'    
+]
+
+What are endpoints:
+
+suppose we want to send letter to a friend that is
+if we have a pen pal in Europe or if we have a pen 
+pal in us or africa so the endpoint of the letter in http
+will be http://hostName/endpoint
+
+http://hostName/europe or http://hostName/africa
+
+
+so this is about get method and not lets see other HTTP methods:
+
+
+But to summerise http is a way for client to communicate with server side (database and 
+backend handlers or api)and client side can be that a user uses to interact with our website
+so that could be our desktop,laptop or mobile
+
+basically
+client ->sends HTTP request->to->server
+client<-receives an HTTP response from<-server
+
+and the response which client recieves from server comes with a response code and they are known
+as http response code:
+
+HTTP response code or response status indicates if a 
+specific HTTP request has been successfully completed.
+Response are grouped in five classes:
+
+1.Informational responses(100-199)
+2.Successful response(200-299)
+3.Redirectional response(300-399)
+4.Client error response(400-499)-famous one is 404
+5.Server error response(500-599)
+
+
+you can see the detail instruction at mdn web docs
+
+most common is 200 which is ok that everything or every 
+method like get,put,patch,put and delete worked very well
+
+and 404 means sever couldnt find the resource
+
+HTTP return code cheat sheet is :
+
+1** Hold on
+2** here you go
+3** go away(redirected)
+4** you fucked up(client mistake)
+5** i  fucked up(developer or serevr dev mistake)
+
+let's revise once again our http request methods:
+
+1.GET:reterives information from the specified resource 
+,and should only be used to request data(not modify it)
+
+2.POST:sends data to the sever for processing it ,usually
+resulting a change in server state or side effect on the 
+server 
+
+3.PUT:updates a current resource or creates it.If it 
+dosent exist,with the client providing a complete and
+updated copyy of the resource 
+
+4.PATCH:Updates part of an existing resource,with the 
+client providing only the part of the resource that needs
+to be updated 
+
+5.DELETE:removes the specifed part from the server
+
+NOTE:A <post> request is usually made from some html form,and 
+this includes thing such as,for example a sign up
+page where you need to put in your name,your username,email
+address,etc and that request goes to our server via post 
+request so that data is sent along with that request
+and then the server will do something with that request,
+maybe putting it into a database ,maybe validating it .
+
+and then once its done it send back a response info and 
+response code
+
+now for get method we dont need a frontend but for post,
+patch,put and delete we need frontend like html form 
+to get data from user but since creating frontend can take
+time we will use api testing tool like rapidAPI and 
+postman 
+
+We will use postman:
+In POSTMAN we can target a specific url or endpoint and 
+set our method-request so lets see how we can do that :
+
+//let see for post:
+
+app.post("/send",(req,res)=>{
+    //to send data from client to server we should have
+    //a html frontend which can have form to take 
+    //encoded data ,header or any message and that 
+    //html form type should be POST so that we can send data to sevrer
+    //and then the function code written on that sever which works on that posted data will work on it
+    //and then the result will be sent back
+});
+
+lets take a example :
+
+<body>
+    <h1>Calculator</h1>
+    <form action="calculate" method="POST">
+        <label for="num1">num1:</label>
+        <input type="text" id="num1" name="num1">
+        <label for="num2">num2:</label>
+        <input type="text" id="num2" name="num2">
+        <label for="operation">operation:</label>
+        <input type="text" id="operation" name="operation">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+
+so this a fairly simple frontend which contains a form to take two number and one character which will be
+a operator and post that data
+
+
+import express from "express";
+import bodyParser from "body-parser";
+import {dirname} from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const app = express();
+const port = 3000;
+var result=0;
+app.use(bodyParser.urlencoded({extended:true}));
+
+function calculate(req,res,next)//this is a function related to posted data to calculate sum
+{let num1=req.body["num1"];
+    let num2=req.body["num2"];
+    let opr=req.body["operation"];
+    if(opr==='+'){result=Number(num1)+Number(num2);}
+    else if(opr==='*'){result=num1*num2;}
+    else if(opr==="/"){result=num1/num2;}
+    next();}
+
+app.use(calculate);//the above function gets turned into a middlewares and everytime the page
+//gets reloads the middlewhere calls the function again on the page 
+app.get("/",(req,res)=>{
+    console.log(req.body);//at this endpoint req body which comes from html page will have {}
+    console.log(result);//result will be 0 as with nothing in req body middlewhere has no use
+    res.sendFile(__dirname+"/public/index.html");});
+app.post("/calculate",(req,res)=>
+{
+    //suppose  in form we enter num1:4 and num2:5 and operation:+
+    console.log(req.body);//req body will update at new endpoint  { num1: '4', num2: '5', operation: '+' }
+    console.log(result); //9:result variable will also get updated by calling the middlewhere after reloading at new endpoint
+    
+    res.send(`<h1>Result is ${result}</h1>`);
+});
+
+
+app.listen(port,()=>{
+    console.log("Server running");
+});
+
+
+So this how post method works with html frontend but since we dont have html frontend now we will use postman 
+and we can simulate this:
+
+so we have this endpoint specifed in index.js,goto postman:
+
+1.paste :localhost:3000/calculate end point in the url Bar 
+2.set method to post
+3.Now there is a nav bar with param,header,authorization,body--go into anyone 
+4.lets go into body
+5.under body go to form url encoded
+6.under key:type anything but for our purpose we will have keys as num1 and num2 with value as 4 and 5 
+7.click on send and we will see the output and response code in the console 
+
+we can make a small experimental web server which just send status code when we hit that endpoint with some data :
+
+import express from "express";
+const app=express();
+
+app.get("/",(req,res)=>{
+    res.send("Hello World");
+    }
+);
+
+app.post("/register",(req,res)=>{
+//we can send some random data to this check point
+//nothing will happen to that data as no middlewares or 
+//function are define to process that data 
+//so we will just respond with the status code.
+
+res.sendStatus(201);
+
+});
+
+//Similarly
+
+app.put("/user/shivansh",(req,res)=>
+{res.sendStatus(200);});
+
+app.patch("/user/shivansh",(req,res)=>{
+    res.sendStatus(200);
+    }
+);
+
+app.delete("/user/shivansh",(req,res)=>{
+    res.sendStatus(200);}
+);
+
+
+
+
+
+
+

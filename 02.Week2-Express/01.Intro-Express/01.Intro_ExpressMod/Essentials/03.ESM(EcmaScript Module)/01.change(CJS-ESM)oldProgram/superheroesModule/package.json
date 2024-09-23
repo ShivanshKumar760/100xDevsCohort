@@ -1,0 +1,6 @@
+{ "main": "sup.js",
+  "type": "module",
+  "dependencies": {
+    "superheroes": "^3.0.0"
+  }
+}

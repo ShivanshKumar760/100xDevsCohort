@@ -1,7 +1,8 @@
 Callbacks --so as the name suggest call something and get back something:
 
 
-So in JavaScript a function can take another function as argument or as an input so when we talk about call-back it basically means that function1 is taking a function2
+So in JavaScript a function can take another function as argument or as an input so when we talk about call-back it 
+basically means that function1 is taking a function2
 as an argument/parameter and calling it to get back something  ,lets understand this with a problem or use case 
 
 

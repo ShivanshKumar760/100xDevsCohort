@@ -1,0 +1,1222 @@
+So what is a sync which stands for Synchronous  means and what is async which stands for asynchronous 
+
+Q.What does synchronous mean?
+Ans:Together, one after the other, sequential
+Only one thing is happening at a time
+
+Q.What does asynchronous mean?
+Ans :Opposite of synchronous,Happens in parts
+Multiple things are context switching with each other
+
+
+Async functions vs sync functions
+Lets build some intuition
+Human brain and body is single threaded
+1. We can only do one thing at a time----this thing is Synchronous method
+2. But we can context switch b/w tasks, or we can delegate tasks to other people---this is asynchronous methhod
+
+
+So although the Human brain and body are single threaded that is they can perform one task at a time they are capable of context switching and same thing is true for JavaScript that is although it is single threaded
+but it can also context switch b/w task using async functions
+
+
+let see a practical example  of  a task that can be done both async and synchronously :
+
+Making a maggi noodels
+----------------------------
+You have 4 tasks in order to make a maggi-
+1. Boil water
+2. Cut vegetables
+3. Cut maggi packet
+4. Get ketchup from the shop nearby
+
+Now either we can perform each task one by one lets see how :
+
+Suppose we have a person p1 who is making maggi in sync mode 
+
+Person P1 (maggi)
+---------------
+1. Boil water---for this to complete wait for 4 to 5 minute -onece done move to 2nd step
+2. Cut vegetables---this will take around 6 minute--once done move to 3rd step
+3. Cut maggi packet---will take around 1 min max---once done move to 4th step
+4. Get ketchup from the shop nearby--will take around 10 minute 
+
+so total time will be :5+6+1+10=22  minute
+
+
+now suppose person p2 wants to do this in async mode .
+
+Person P2
+-------------
+
+1. Boil water
+2. Cut vegetables
+3. Cut maggi packet
+4. Get ketchup from the shop nearby
+
+
+1. Boil water---for this to complete wait for 4 to 5 minute but person p2 decided while this is taking  place lets delegate my ketchup task to somone else --so he/she assigned that task to househelper 
+    let the house helper be kamla di(KD)--Now Task 4 that is bringing ketchup from market is executing parallelly 
+
+    Task Pannel
+    Person2                      |Kamla di(KD)
+1.T1 is being executed           |KD performing task 4
+while T4->assign to KD           |
+                                 |
+                                 |
+2.Now T1 is being executed and   |   
+p2 decides to context switch to  |
+task T3 and cut maggi packet     |
+which took 1 minute              |
+                                 |
+3.Now task3 is completed         |
+and task1 is still being         |
+executed while kamla di          | 
+is doing task4 parallelly        |
+and 1 minute is passed           |
+                                 |
+4.and now p2 decided             |
+to perform task 2                |
+cuting vegetables                |
+which took around 8 minute and   |
+while we where cutting vegetables|
+water was boiled-----------------|->>>>>And now kamla di is back after 8 mins and waiting for u to finish work and take ketchup from kamla di but since you are pre-occupied with t3 that cutting vegetables
+
+
+5.Now after 10 mins every task is 
+completed ------------------------->kamla di had  to wait for 2 mins for u to complete all task 
+
+
+SO total time by p2 and kamla di is 10mins by us + kamla di waiting time is 2 min=12 min which is still better than doing every synchronously and waiting for long  time instead getting pre-occupied
+with one task we can context switch and delegate our task to some else and  do prallel processing to save time
+
+
+
+
+
+Async functions vs sync functions
+What did we learn?
+Even if you are single threaded (brain can do only one thing at a time), you can do things parallely by Delegating
+You can also context switch between tasks if need be (the net time to do both the things would still be the same)
+Net amount of time take to do a task can be decreased
+by doing these two things (delegating and context switching)
+
+
+
+
+Q.How does JS do the same? Can JS delegate? Can JS context switch?
+Ans:Yes! Using asynchronous functions
+
+
+Until now, we’ve only seen synchronous functions
+
+
+function findSum(n)
+{
+    let ans=0;
+    for(let i=0;i<n;i++
+    {
+        ans+=i;
+    }
+    return ans;
+
+}
+
+console.log(findSum(10));------>Now here this function findSum is synchronous which means once the control reacches here it goes  to function body and starts executing that function and once its done then
+//it will go to next line and 
+console.log("hello world");//print hello world 
+
+
+so here if u see that our js thread is busy executing that function findSum() and since its  busy it wont be able to execute and other line of code below it and suppose if the number passed
+in findSum() function is large lets say 1000  then it will take longer time to get executed plus what if  there is more important peice of code below it then it will have to wait for it to get
+executed and this is where async function comes into play
+
+
+lets see what a async function does ,JS comes pre-equppied with lot of async function and we can create our own asyn function to one of the async function is setTimeout().
+
+
+function findSum(n)
+{
+    let ans=0;
+    for(let i=0;i<n;i++
+    {
+        ans+=i;
+    }
+    return ans;
+
+}
+
+
+function findSumTil100()
+{
+    console.log(findSum(100));
+}
+
+setTimeout(findSumTil100,5*1000);//Now this is a async function which means as soon as the control reach here at this line it will wait for 5 sec to execute this code but while this is 
+//waiting for 5 sec to get executd it will context switch with the line below it and will execute all the code below it and once executed all code below it then it will context switch
+//with the async function
+console.log("Hello World");
+
+
+Output :
+Hello World
+4950
+
+
+
+Async functions vs sync functions
+Things that are delegated
+What are common async functions?
+setTimeout
+fs.readFile - to read a file from your filesystem
+Fetch - to fetch some data from an API endpoint 
+
+
+
+let see how file system asyn function works
+
+hello.txt:
+-------
+hey everyone
+
+----------------
+
+js file 
+---------
+const fs = require("fs");
+fs.readFile("./hello.txt","utf-8",function(err,data){
+    console.log(data);
+});
+
+
+console.log("hello world");
+
+
+Now which line do u think will get executd first --so most of us will answer since js follow top  to 
+bottom approach and also it follows procedural language paradiagm first it will execute readFile()  
+function
+
+as it comes  first in the line  of execution so the output will be 
+
+
+Guessed output :
+-----------------
+hey everyone
+hello world 
+but the output we got is:
+--------------------------
+hello world
+hey everyone
+
+
+Why is that --that's cause fs.readFile is an async function so while its executing in background it 
+context switch with code below it and let it execute and once all the code below it is executed fs.readFile()
+executes
+
+
+Now once we have understood what is async and sync function are lets understand three things 1.call stack 2.web apis and 3.callback queue
+
+
+So if we go and ask javascript like-Q.hey js what are you exactly 
+Answer will be :I am a  single threaded non-blocking asynchronous concurrent language hmmm whats that suppose to mean quite hard to decode 
+if you are new to programming language so lets ask js what do u offer js :So js will reply i have a call stack,event loop,callback queue and some other api and stuff 
+what???????the hell is that now 
+
+Okay so js gave us a very complicated answer but js actually runs on v8 chromium engine so if we go and ask 
+v8 like what the are these:call stack,event loop,callback queue and some other api and stuff ,so v8 replied i have a call stack and heap now what the hell is a heap
+
+
+So if we see a simplified view of js runtime like v8 this is what we can observe :
+
+v8
+[heap                              stack]
+[M1                                f3() ]
+[   M2                             f2() ] 
+[M3                                f1() ]
+
+so heap is where memory allocation happens and stack is where we stack one upon one called function frames 
+
+but since  v8 is the runtime for js that means the function which are built into js are suppose to be written in v8 engine runtime for js to execute 
+but if we clone a v8 runtime codebase and take a look inside the code we can clearly see that it does not have function like setTimeout or DOM or HTTP request 
+so they dont exist in V8 which is kind of a surprise to us as setTimeout is one of the first things in basic js that we use when we start thinking about the async stuff and its 
+not in the V8 source hmm and it took some time to realise but there is a bigger picture here lets try to see what that is ;
+
+
+v8
+[heap                              stack]
+[M1                                f3() ]
+[   M2                             f2() ] 
+[M3                                f1() ]----------->So this is a v8 engine built inside broswer to run js code 
+
+
+but on top of this v8 engine browser offer some ectra feature and they are actually api-appliction programming interface that code written by someone else that is 
+the browser but js v8 uses it as webApis
+
+
+v8
+[heap                              stack]
+[M1                                f3() ]
+[   M2                             f2() ] 
+[M3                                f1() ]----->webApi[setTimeout,DOM,HTTP request]
+
+[event loop]
+
+callback-queue[]
+
+
+this is what it looks like so there v8 which runs js and some extra api and functionality via broswer which makes javascript what javascript is today
+
+so lets start from beginning :
+
+
+1.call stack :
+----------------
+
+So js is a single thread programming language so one thread===one call stack===one thing at a time that means the program can run one peice of code at a time 
+
+let's take an examople :
+
+function multiply(a,b)
+{
+    return a*b;
+}
+
+function square(n)
+{
+    return multiply(n,n);
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+printSquare(4)
+
+So now the call stack is basically a data structure which deals with  the push and pop operation which means we basically push an item from top and pop a item from top it follow the 
+principal off last in first out --also know as LIFO so it's a data structure which records basically where in the program we are ,if we step into-so if we step into a function we push that function 
+into the stack and once the function returns something we pop out the stack from top
+
+
+so if we run the code above the main file where the code is written is interpreted as main() function the very first function which get pushed into the stack and the very last function which will 
+pop off from the stack so yeah file itself is treated as main function which need not to be called js automatically calls it then in the main file we have functions are defining the 
+state of the program but they wont work until and unless they are called 
+so this is what the stack will look like  
+
+now lets see what will happen in the call stack of v8 engine
+
+function multiply(a,b)                           call stack
+{
+    return a*b;                                  multiply(4,4)------------->this will return 16                           
+}                                                square(4)
+                                                 printSquare(4)
+function square(n)                               main()
+{
+    return multiply(n,n);    
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+
+this is how the functions will be called onto the stack lets see how they will pop off :
+
+
+1.
+function multiply(a,b)                           call stack
+{
+    return a*b;                                  multiply(4,4)------------->this will return 4*4 to square(4)  and then it will pop of                     
+}                                                square(4)
+                                                 printSquare(4)
+function square(n)                               main()
+{
+    return multiply(n,n);    
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+
+
+2.
+
+function multiply(a,b)                           call stack
+{
+    return a*b;                                                         
+}                                                square(4)//this will catch 16 and return that to printSquare() after  which it will pop of 
+                                                 printSquare(4)
+function square(n)                               main()
+{
+    return multiply(n,n);    
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+3.
+
+function multiply(a,b)                           call stack
+{
+    return a*b;                                                         
+}                                               
+                                                 printSquare(4)//this will  print 16 onto the console and then pop of 
+function square(n)                               main()
+{
+    return multiply(n,n);    
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+4.
+
+function multiply(a,b)                           call stack
+{
+    return a*b;                                                         
+}                                               
+                                                
+function square(n)                               main()-->when the program has been executed main() function will pop
+{
+    return multiply(n,n);    
+}
+function printSquare(n)
+{
+    var squared=square(n);
+    console.log(square);
+};
+
+Okay so this is a very fairly simple block of code easy to ubderstand and how call stack work on this type of code .
+
+lets take an example of recursive code without any base condition to stop that recursion :a recursive function is one where the function calls itself again and again 
+
+
+function foo()
+{
+    return foo();----------->this perticular line of code will keep on calling foo () 
+
+}
+
+foo();
+
+
+
+function foo()
+{
+    return foo();----------->this perticular line of code will keep on calling foo () 
+    |_____________________>foo()
+                            |__________>foo()
+                                        |_____________>foo()
+                                                        |___________n times foo() will be called 
+    
+}
+
+foo();
+
+so call stack will be like this :
+
+
+CALL STACK:
+---------------
+
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+foo()
+.
+.
+.n times cause there is no base condition to stop it 
+
+
+so this recursive function will blow up the stack causing a RangError:Maximum call stack size exceeded and this leads to blocking that is js compiler will automatically stop that
+recursive code to block it from using more memory.
+
+
+But another blocking behaviour which can be noticed in JavaScript is that when we do network request or image processing these task take a lot of time to get processed 
+and since some network request task are synchronous in nature and they take time to process which blocks the call stack basically and cause of which other operation below it cannot be 
+executed ----and thats cause browser are slow 
+
+and to tackle this we have async callbacks--basically means we run some code give it a callback and execute it later 
+
+so lets see how  async function work when it comes to call stack :
+
+
+lets take a peice of code :
+
+console.log("Hi");
+
+setTimeout(()=>{console.log("Hi there")},5000);--->so since this is async and we have studied how async function work till now this will execute the arrow function after 5 sec
+//but since it's async it wont block the call stack and let the call stack push new function below it and when every function or code below it gets executed then the 
+//setTimeout function will get executed till then it will be queued
+
+
+console.log("Done");
+
+if we run this code using the following command like this :node main.js
+output:
+--------
+Hi
+done
+Hi there
+
+
+let see what's happening in call stack :
+
+1.
+console.log("Hi");                                                         call stack
+
+
+setTimeout(()=>{console.log("Hi there")},5000);                           console.log("Hi");     //this will log the line Hi and pop of    
+console.log("Done");                                                       main()
+
+
+2.
+console.log("Hi");                                                         call stack
+
+
+setTimeout(()=>{console.log("Hi there")},5000);                           setTimeout(()=>{console.log("Hi there")},5000);    //this will get excuted after 5 sec so till than since its async it wont 
+                                                                            //block the call stack but automatically will disappear without executing it 
+console.log("Done");                                                       main()
+
+
+3.
+console.log("Hi");                                                         call stack
+
+
+setTimeout(()=>{console.log("Hi there")},5000);                           console.log("Done")//this will log the line Done and pop of    
+console.log("Done");                                                       main()
+
+
+and then magically after 5 sec or when every line below the async function has been executed then the async function will come back to call stack
+
+4.
+console.log("Hi");                                                         call stack
+
+                                                                          console.log("Hi there")----->and after executing this call stack will become free
+setTimeout(()=>{console.log("Hi there")},5000);                           setTimeout(()=>{console.log("Hi there")},5000);    
+console.log("Done");                                                       main()
+
+
+
+
+But how did our async function magically disappeared and came back to understand we need to know abiut concurrency and event loop
+
+So yeah i may have lied to you so when i said that js is actually single threaded i meant js runtime ie v8 engine is single threaded but broswer add lot of tools and 
+api to make js a concurrent programming language and it is done by webapis and event loop 
+
+
+
+console.log("Hi");
+
+setTimeout(()=>{console.log("Hi there")},5000);
+
+
+console.log("Done");
+
+this is our code lets see how this code will work in js runtime on top of broswer
+
+
+1.
+console.log("Hi");                                       callStack                             webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                        ]
+                                                   [                        ]
+                                                   [console.log("Hi")       ]
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[                                  ]
+
+
+
+2.
+console.log("Hi");                                       callStack                                       webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                                               ]
+                                                   [                                               ]
+                                                   [setTimeout(()=>{console.log("Hi there")},5000);]--->this will get executed after 5 sec but 
+                                                   //since this is a async function offered by browser 
+                                                   //so it will get defer to webApi 
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[                                  ]
+
+
+
+
+console.log("Hi");                                       callStack                                       webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                                               ]   [setTimeout(()=>{console.log("Hi there")},5000);]---->Now it will stay in web api for 
+                                                                                                        //for 5 sec but what will happen after 5 sec so the problem with webApi is that they cannot 
+                                                                                                        //interfere with the existing codebase and the way code is running ->basically they dont have the
+                                                                                                        //authority so the get transfered to callback queue
+                                                   [                                               ]
+                                                   
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[                                  ]
+
+
+
+console.log("Hi");                                       callStack                                       webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                                               ]   
+                                                   [                                               ]
+                                                   
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[setTimeout(()=>{console.log("Hi there")},5000);]---->now this will stay in callback queue untill all the code after this async function hasnt executed 
+//once every has been executed the event loop will transfer the async function from callback queue to call stack
+
+
+3.
+
+console.log("Hi");                                       callStack                                       webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                                               ]   
+                                                   [   console.log("Done")                         ]
+                                                   
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[setTimeout(()=>{console.log("Hi there")},5000);]
+
+
+4.
+
+console.log("Hi");                                       callStack                                       webApis
+setTimeout(()=>{console.log("Hi there")},5000);    [                                               ]   
+                                                   [setTimeout(()=>{console.log("Hi there")},5000);]
+                                                   
+console.log("Done");                               [main()
+
+[event loop]
+
+callback queue[]
+
+
+so this is how js works with async functions
+
+
+
+Now lets study about Promises:
+---------------------------------------
+=>What are exactly promises in js and how they help when it comes to async functions
+
+lets take a asyn function with call backs 
+
+function findSum(n)
+{
+    let ans=0;
+    for(let i=0;i<=n;i++)
+    {
+        ans+=i;
+    }
+    return ans;
+}
+function findSumTil100()
+{
+    return findSum(100);
+}
+
+setTimeout(findSumTil100,2000);
+console.log("hello world");
+
+now since this code is small it wont look that ugly but suppoose we have code in js to animate using async which is pretty bigger
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+
+	<title>Callback Hell</title>
+	
+	<style>
+		* {
+			padding: none;
+			margin: none;
+			box-sizing: border-box;
+		}
+
+		.word {
+			color: #308d46;
+			font-size: 4rem;
+			transition: all .5s ease-in;
+			margin: 0 5px;
+			transform: translateY(3.8rem);
+			opacity: 0;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 95vw;
+			height: 95vh;
+		}
+
+		.container {
+			overflow: hidden;
+			display: flex;
+			flex-direction: row;
+		}
+
+		.animate {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2 class="word">Geeks</h2>
+		<h2 class="word">For</h2>
+		<h2 class="word">Geeks</h2>
+	</div>
+</body>
+<script>
+	let words = document.querySelectorAll(".word");
+
+	const animateAll = (animate) => {
+		setTimeout(() => {
+			animate(words[0]);
+			setTimeout(() => {
+				animate(words[1]);
+				setTimeout(() => {
+					animate(words[2]);
+				}, 1000)
+			}, 1000)
+		}, 1000)
+	}
+
+	const animate = (word) => {
+		word.classList.add("animate");
+	}
+
+	animateAll(animate);
+</script>
+</html>
+
+
+something like this now if we look carefully the part which is using async we can see it quite big and one async is nested in another anync 
+
+
+	const animateAll = (animate) => {
+		setTimeout((/*anonymous callback*/) => {
+			animate(words[0]);
+			setTimeout(() => {
+				animate(words[1]);
+				setTimeout(() => {
+					animate(words[2]);
+				}, 1000)
+			}, 1000)
+		}, 1000)
+	}
+
+    Now this nesting of async function also comes with nesting of call back function cause every async function takes a call back and 
+    this pyramid structure of nesting results in call back hell 
+
+    What is CallBack Hell
+    -------------------------------
+    Callback Hell is essentially nested callbacks stacked below one another forming a pyramid structure. Every callback depends/waits for the previous callback, 
+    thereby making a pyramid structure that affects the readability and maintainability of the code. 
+
+    Plus that nesting of async functiona and call back makes the code difficult to read :
+    We can notice that the animateAll function takes a pyramid structure, thereby making it difficult to read.
+
+
+    Take reffrence for call back from here :http://callbackhell.com/ or https://www.geeksforgeeks.org/what-to-understand-callback-and-callback-hell-in-javascript/ or 
+    https://www.scaler.com/topics/callback-hell-in-javascript/ or https://medium.com/@raihan_tazdid/callback-hell-in-javascript-all-you-need-to-know-296f7f5d3c1
+
+
+    lets one more time understand callback hell in simple term:
+
+Callback Hell is a situation in JavaScript where multiple nested callback functions make your code look like it’s been through a blender on the highest setting.
+This typically occurs when dealing with asynchronous operations, such as making API requests or handling file I/O, where one operation depends on the result of another or previous One.
+Here’s an example of what callback hell might look like:
+
+asyncOperation1(function(result1){
+    asyncOperation2(function(result2){
+        asyncOperation3(function(result3){
+        //more nested call back
+        });
+    });
+});
+
+
+As you can see, each asynchronous operation requires a callback function, and when you have multiple operations depending on each other, the code structure becomes deeply nested and hard to follow.
+
+
+
+Let’s illustrate this with a real-world example:
+Meet Mr. Callback Bob, a JavaScript developer with a penchant for getting himself into sticky situations.
+Bob’s task for the day is to make a series of asynchronous calls to fetch data from a fictitious API called “Dad Joke Central.”
+He wants to fetch a random dad joke, translate it into another language, and then post it to a website.
+Bob starts off with good intentions but ends up in Callback Hell: 🙂
+
+fetchRandomJoke((joke) => {
+    console.log(joke);
+
+    translateJoke(joke, (translatedJoke) => {
+        console.log(translatedJoke);
+
+        postJoke(translatedJoke, () => {
+            console.log("Joke posted successfully!");
+        });
+    });
+});
+
+
+Poor Bob! 🙂
+He’s now stuck in a deep pit of callbacks, and his code looks like a staircase to nowhere.😄
+The readability of the code has gone out the window, and Bob’s sanity is hanging by a thread.😅
+
+
+
+*)Escaping Callback Hell:
+Fear not! There are ways to rescue Bob from Callback Hell and make his code more manageable and elegant.
+To mitigate callback hell, JavaScript developers have adopted various techniques and patterns.
+
+
+
+Here are a couple of techniques:
+
+🔥 1. Promises to the Rescue
+Promises are a JavaScript feature that can help Bob untangle his code. With promises, he can chain asynchronous operations together and use “then” and “catch” methods to make the code more readable…👩‍💻
+
+fetchRandomJoke()
+    .then((joke) => {
+        console.log(joke);
+        return translateJoke(joke);
+    })
+    .then((translatedJoke) => {
+        console.log(translatedJoke);
+        return postJoke(translatedJoke);
+    })
+    .then(() => {
+        console.log("Joke posted successfully!");
+    })
+    .catch((error) => {
+        console.error("Something went wrong:", error);
+    });
+🔥 2. Embrace the Power of Async/Await
+Bob can also enlist the help of async/await, a newer JavaScript feature that makes asynchronous code look almost synchronous with better error-handling capabilities: 😎
+
+async function tellJoke() {
+    try {
+        const joke = await fetchRandomJoke();
+        console.log(joke);
+
+        const translatedJoke = await translateJoke(joke);
+        console.log(translatedJoke);
+
+        await postJoke(translatedJoke);
+        console.log("Joke Translated & posted successfully!");
+    } catch (error) {
+        console.error("Something went wrong:", error);
+    }
+};
+
+tellJoke();
+With async/await, Bob’s code is not only more readable but also easier to reason about. 😎😎
+He can clearly see the flow of his asynchronous operations.
+This makes it easier to model and implement complex workflows.
+
+
+
+
+✨ Wrapping Up:
+Callback Hell is a place you don’t want to find yourself in when writing JavaScript code.
+It’s a maze of nested callbacks that can drive even the most experienced developers to the brink of madness.
+But fear not!
+With the help of promises and async/await, you can rescue your code from the clutches of Callback Hell and make it more readable, maintainable, and enjoyable to work with.
+
+So, next time you’re tempted to write deeply nested callbacks, remember Mr. Callback Bob and his misadventures.😜
+Choose promises or async/await, and you’ll emerge from the depths of Callback Hell unscathed, with cleaner and more efficient code.
+
+
+
+Now we will see what Promises and await are :
+
+
+Firstly Promises :
+
+Promises:Promises are syntactical sugar that makes the ugly asyn code slightly more readable ,
+remember they are syntactical sugaar that is they are not necessary to use as under the hood the 
+perform same functionality of using callback 
+
+Until now, we’ve only used other people’s asynchronous functions
+How can we create an asynchronous function of our own? ------>For that we can also use promise but lets see the 
+ugly way of creating a async function of our own and that is by using a concept of wrapper  
+
+Wrapper are basically function written by us around  other async function/or function written by other 
+
+
+Ugly way
+----------
+const fs = require('fs');
+
+// my own asynchronous function
+//here kireatReadFile is a wrapper on top of fs.readFile()-->Which is a async function
+function kiratsReadFile(cb) {
+  fs.readFile("a.txt", "utf-8", function(err, data) {
+    cb(data);
+  });
+}
+
+function onDone(data) {
+  console.log(data)
+}
+
+kiratsReadFile(onDone)
+
+
+
+so this here kiratsReadFile is a wrapper:
+
+function kiratsReadFile(cb) {
+  fs.readFile("a.txt", "utf-8", function(err, data) {
+    cb(data);
+  });
+}
+
+It is just a wrapper on top of another async function,
+which is fine.
+
+Usually all async functions you will write will be on top of
+JS provided async functions like setTimeout or fs.readFile
+
+
+Now lets see the cleaner way by using Promises :
+const fs = require('fs');
+
+// my own asynchronous function
+function kiratsReadFile() {
+  return new Promise(//resolve function
+  function(resolve) {
+    fs.readFile("a.txt", "utf-8", function(err, data) {
+      resolve(data);
+    });
+  })
+}
+
+// callback function to call
+function onDone(data) {
+  console.log(data)
+}
+
+kiratsReadFile().then(onDone);
+
+
+
+This here in kiratsReadFile is the Promise :
+return new Promise(function(resolve) {
+    fs.readFile("a.txt", "utf-8", function(err, data) {
+      resolve(data);
+
+
+Its just syntactic sugar
+Still uses callbacks under the hood 
+
+
+Dont worry Promises is very new and may be a bit hard to digest but for now just remember its syntax and we will debunk it one by one 
+
+
+JavaScript Promises are used to simplify managing multiple asynchronous operations, preventing callback hell and unmanageable code. They represent future values, associating handlers with eventual success or failure, resembling synchronous methods by postponing value delivery.
+
+Syntax:
+
+let promise = new Promise(function(resolve, reject){
+     //do something
+});
+Parameters
+
+The promise constructor takes only one argument which is a callback function
+The callback function takes two arguments, resolve and reject
+Perform operations inside the callback function and if everything went well then call resolve.
+If desired operations do not go well then call reject.
+
+
+A Promise has four states
+
+State	    Description
+--------------------------------
+Fulfilled	Action related to the promise succeeded
+Rejected	Action related to the promise failed
+Pending  	Promise is still pending i.e. not fulfilled or rejected yet
+Settled	     Promise has been fulfilled or 
+
+
+Example 1: In this example we create a promise comparing two strings. If they match, resolve; otherwise, reject. Then, log success or error accordingly. 
+Simplifies asynchronous handling in JavaScript.
+
+
+let promise = new Promise(function (resolve, reject) {
+    const x = "geeksforgeeks";
+    const y = "geeksforgeeks"
+    if (x === y) {
+        resolve();
+    } else {
+        reject();
+    }
+});
+
+promise.
+    then(function () {
+        console.log('Success, You are a GEEK');
+    }).
+    catch(function () {
+        console.log('Some error has occurred');
+    }); 
+
+Output
+Success, You are a GEEK
+
+
+Promise Consumers: Promises can be consumed by registering functions using .then and .catch methods.
+
+1. Promise then() Method
+Promise method is invoked when a promise is either resolved or rejected. It may also be defined as a carrier that takes data from promise and further executes it successfully.
+
+Parameters: It takes two functions as parameters.
+
+The first function is executed if the promise is resolved and a result is received.
+The second function is executed if the promise is rejected and an error is received. (It is optional and there is a better way to handle error using .catch() method
+Syntax:
+
+.then(function(result){
+        //handle success
+}, function(error){
+        //handle error
+})
+
+
+
+
+Example 2: This example shows how the then method handles when a promise is resolved
+
+
+let promise = new Promise(function (resolve, reject) {
+    resolve('Geeks For Geeks');
+})
+
+promise
+    .then(function (successMessage) {
+        //success handler function is invoked 
+        console.log(successMessage);
+    }, function (errorMessage) {
+        console.log(errorMessage);
+    }); 
+
+Output
+Geeks For Geeks
+
+
+
+Example 3: This example shows the condition when a rejected promise is handled by second function of then method
+
+
+let promise = new Promise(function (resolve, reject) {
+    reject('Promise Rejected')
+})
+
+promise
+    .then(function (successMessage) {
+        console.log(successMessage);
+    }, function (errorMessage) {
+        //error handler function is invoked 
+        console.log(errorMessage);
+    }); 
+
+Output
+Promise Rejected
+2. Promise catch() Method
+Promise catch() Method is invoked when a promise is either rejected or some error has occurred in execution. It is used as an Error Handler whenever at any step there is a chance of getting an error.
+
+Parameters: It takes one function as a parameter.
+
+Function to handle errors or promise rejections.(.catch() method internally calls .then(null, errorHandler), i.e. .catch() is just a shorthand for .then(null, errorHandler) )
+Syntax:
+
+.catch(function(error){
+        //handle error
+    })
+
+
+
+Now  one thing  to question is that is promise itslef is a asynchronous  process or a synchronous process :
+let see that with an example 
+
+
+
+function kiratsReadFile() {
+  return new Promise(function(resolve) {
+    fs.readFile("./hello.txt", "utf-8", function(err, data) {
+      resolve(data);
+    });
+  })
+}
+
+// callback function to call
+function onDone(data) {
+  console.log(data)
+}
+
+
+let promiseHolder=kiratsReadFile();
+console.log(promiseHolder);
+console.log("promise executed");
+kiratsReadFile().then(onDone);
+console.log("Hello");
+
+
+Output will be :
+
+Promise { <pending> }
+promise executed
+Hello
+hey everyone
+
+
+So as we can see the variable that holds the promise is logged before another log statement which is "promise excuted" but when the promise is called on a function the resolve it gives 
+back is asynchronous as kiratsReadFile().then(onDone); is excuted after console.log("Hello");
+
+so Promise itself is synchronous process but the resolve it gives is asynchronous
+
+
+Okay so we unnderstood what promise does meaning they are the syntactical sugar on top of call back and helps us dealing with callback Hell
+
+but what promises exactly are :
+
+
+What even is a promise?
+It is just a class that makes callbacks and async functions slightly more readable
+
+
+
+let promiseHolder=new Promise();//intiates a object pointing to class Promise;
+
+console.log(promiseHolder);
+
+Output will be :
+TypeError: Promise resolver undefined is not a function
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (D:\coding\development\Web Development\Cohort\01.Week1\11.Async_Await_Promisses\t.js:56:19)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:23:47
+
+lets give it a resolver to return a promise state
+
+
+
+let promiseHolder=new Promise(function(resolve){});//intiates a object pointing to class Promise;
+
+console.log(promiseHolder);
+
+Output :
+Promise { <pending> }
+
+So object of type Promise 
+
+
+It's very similar to another class built inside of js like Date class :
+
+
+let d=new Date();
+console.log(d);
+2024-08-13T00:03:40.981Z
+console.log(d.getDate());
+
+Output :
+13
+
+
+
+Now here if we execute this code snippet :
+
+let promiseHolder=new Promise(function(resolve){});//intiates a object pointing to class Promise;
+
+console.log(promiseHolder);
+
+Output :
+Promise { <pending> }
+
+The output is Promise{<pending>} now what here is pending well we know its the state of Promise but how can we change its state for
+that all we need to do is the resolve 
+which promise return should be called on some function
+
+
+
+let promiseHolder=new Promise(function(resolve){
+  resolve("hi there")  
+});//intiates a object pointing to class Promise;
+
+console.log(promiseHolder);
+promiseHolder.then((data)=>{console.log(data)});
+console.log(promiseHolder);
+
+
+Output will be :
+Promise { <pending> }
+Promise { 'hi there' }
+hi there

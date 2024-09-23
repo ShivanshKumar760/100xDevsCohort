@@ -1,0 +1,15 @@
+{
+  "name": "02.methods",
+  "version": "1.0.0",
+  "description": "HTTP Methods",
+  "main": "method.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shivansh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

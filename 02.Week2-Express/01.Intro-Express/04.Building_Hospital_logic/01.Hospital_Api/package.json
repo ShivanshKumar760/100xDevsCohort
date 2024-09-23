@@ -1,0 +1,16 @@
+{
+  "name": "01.hospital_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hospital.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.20.0"
+  }
+}

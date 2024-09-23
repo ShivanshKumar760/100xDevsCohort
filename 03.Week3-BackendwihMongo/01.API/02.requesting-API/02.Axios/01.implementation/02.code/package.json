@@ -1,0 +1,17 @@
+{
+  "name": "02.code",
+  "version": "1.0.0",
+  "description": "using axios to send request ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shivansh",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.21.0",
+    "zod": "^3.23.8"
+  }
+}

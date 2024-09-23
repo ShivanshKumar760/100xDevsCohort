@@ -1,0 +1,12 @@
+{
+  "name": "writefile",
+  "version": "1.0.0",
+  "description": "use of writeFile method using ESM",
+  "main": "write.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shivansh",
+  "license": "ISC"
+}

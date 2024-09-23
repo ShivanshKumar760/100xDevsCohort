@@ -1,0 +1,2 @@
+to create a package.json file we type npm init command
+>npm init
